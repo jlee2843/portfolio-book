@@ -4,7 +4,9 @@
 format: jb-book
 root: introduction
 parts:
-- caption: Individual Project
+- chapters:
+  - file: contents
+- caption: Individual Projects
   chapters:
   - file: alternative-recipe
   - file: misinformation-analysis
