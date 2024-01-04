@@ -179,6 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Alternative Recipe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="misinformation-analysis.html">Misinformation Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="air-water-quality.html">Air and Water Quality in Canada</a></li>
 </ul>
 
     </div>
@@ -437,12 +438,90 @@ document.write(`
 <span class="expanded">Hide code cell outputs</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="_images/03881f01aee88343d02778de9e537d3562fed9a52f9c66237a8d476cd3456d9b.svg" src="_images/03881f01aee88343d02778de9e537d3562fed9a52f9c66237a8d476cd3456d9b.svg" /></div>
+<img alt="_images/e0d13e29fe773d54c5f429390ec13c6b1a0f254ed672455867e2c644a8629eb0.svg" src="_images/e0d13e29fe773d54c5f429390ec13c6b1a0f254ed672455867e2c644a8629eb0.svg" /></div>
 </details>
 </div>
 </section>
 <section id="finding-the-closest-alternative">
 <h3>Finding the Closest Alternative<a class="headerlink" href="#finding-the-closest-alternative" title="Permalink to this heading">#</a></h3>
+<p>Let’s take a look at a sample row of the <code class="docutils literal notranslate"><span class="pre">nutrition.csv</span></code> dataset used in this project.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>serving_size</th>
+      <th>calories</th>
+      <th>total_fat</th>
+      <th>saturated_fat</th>
+      <th>cholesterol</th>
+      <th>sodium</th>
+      <th>choline</th>
+      <th>folate</th>
+      <th>folic_acid</th>
+      <th>...</th>
+      <th>fat</th>
+      <th>saturated_fatty_acids</th>
+      <th>monounsaturated_fatty_acids</th>
+      <th>polyunsaturated_fatty_acids</th>
+      <th>fatty_acids_total_trans</th>
+      <th>alcohol</th>
+      <th>ash</th>
+      <th>caffeine</th>
+      <th>theobromine</th>
+      <th>water</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Beef, raw, all grades, trimmed to 0" fat, sepa...</td>
+      <td>100 g</td>
+      <td>125</td>
+      <td>3.5g</td>
+      <td>1.4g</td>
+      <td>62mg</td>
+      <td>54.00 mg</td>
+      <td>64.5 mg</td>
+      <td>4.00 mcg</td>
+      <td>0.00 mcg</td>
+      <td>...</td>
+      <td>3.50 g</td>
+      <td>1.353 g</td>
+      <td>1.554 g</td>
+      <td>0.244 g</td>
+      <td>62.00 mg</td>
+      <td>0.0 g</td>
+      <td>1.11 g</td>
+      <td>0.00 mg</td>
+      <td>0.00 mg</td>
+      <td>72.51 g</td>
+    </tr>
+  </tbody>
+</table>
+<p>1 rows × 76 columns</p>
+</div></div></div>
+</div>
+<p>The most suitable alternatives to replace ingredients with high greenhouse gas (GHG) emissions are determined using the mean standard error (MSE), a commonly utilized error metric in regression analysis.</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=1}^{D}(x_i-y_i)^2\]</div>
+<p>A more effective replacement for an ingredient is indicated by a smaller MSE value compared to the original ingredient. It’s important to note that not all nutritional information from the dataframe above has been considered. The detailed rationale for selecting specific nutritional information and excluding others is elaborated further on the project’s GitHub repository.</p>
 </section>
 <section id="total-emission-calculation-with-user-input">
 <h3>Total Emission Calculation with User Input<a class="headerlink" href="#total-emission-calculation-with-user-input" title="Permalink to this heading">#</a></h3>
@@ -457,7 +536,7 @@ document.write(`
 <span class="expanded">Hide code cell outputs</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="_images/d2ca27e94e9570226699f748ed60b12b61593ec23ffaca87e050bec533aca7b1.svg" src="_images/d2ca27e94e9570226699f748ed60b12b61593ec23ffaca87e050bec533aca7b1.svg" /></div>
+<img alt="_images/c2e6b9bb8014614918e223b46522f3d17cdd3930a55796881664c268d1e74cf1.svg" src="_images/c2e6b9bb8014614918e223b46522f3d17cdd3930a55796881664c268d1e74cf1.svg" /></div>
 </details>
 </div>
 </section>

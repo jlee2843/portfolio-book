@@ -10,6 +10,7 @@ parts:
   chapters:
   - file: alternative-recipe
   - file: misinformation-analysis
+  - file: air-water-quality
 # - caption: Group Project
 #   chapters:
 #   - file: misinformation-analysis
