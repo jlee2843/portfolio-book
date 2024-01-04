@@ -1,0 +1,4 @@
+model,train_score,test_score,validation_score,best_estimators
+logisticregression,0.9747138215658937,0.9410294117647059,0.9323504201294452,"[CountVectorizer(max_features=105000, stop_words='english'), LogisticRegression(C=0.1)]"
+linearsvc,0.9890017101709051,0.9391176470588235,0.9298503271954062,"[CountVectorizer(max_features=137000, stop_words='english'), LinearSVC(C=0.01)]"
+multinomialnb,0.8924703526661504,0.8955882352941177,0.893470307405525,"[CountVectorizer(max_features=59000, stop_words='english'), MultinomialNB(alpha=0.001)]"
