@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Alternative Recipe &#8212; Data Science Portfolio</title>
+    <title>Alternative Recipe &#8212; Jenny&#39;s Data Science Hub</title>
   
   
   
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -157,8 +157,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo_new.png" class="logo__image only-light" alt="Data Science Portfolio - Home"/>
-    <script>document.write(`<img src="_static/logo_new.png" class="logo__image only-dark" alt="Data Science Portfolio - Home"/>`);</script>
+    <img src="_static/logo_new.png" class="logo__image only-light" alt="Jenny's Data Science Hub - Home"/>
+    <script>document.write(`<img src="_static/logo_new.png" class="logo__image only-dark" alt="Jenny's Data Science Hub - Home"/>`);</script>
   
   
 </a></div>
@@ -179,7 +179,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Alternative Recipe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="misinformation-analysis.html">Misinformation Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="air-water-quality.html">Air and Water Quality in Canada</a></li>
+<li class="toctree-l1"><a class="reference internal" href="air-water-quality.html">Environmental Health in Canada</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Collaborative Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ubc-mds.github.io/fraud_detection/fraud_detection_full.html">Credit Card Fraud Detection</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jlee2843/CFFS-22-23">Climate Friendly Food Sustainability Labels</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jlee2843/SCOPE-GSE98394">The SCOPE Algorithm</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jlee2843/Peer-Review-22-23">Peer Review Analysis</a></li>
 </ul>
 
     </div>
@@ -234,7 +244,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/jlee2843/portfolio-book" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -251,7 +261,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Falternative-recipe.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jlee2843/portfolio-book/issues/new?title=Issue%20on%20page%20%2Falternative-recipe.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -384,6 +394,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-deliverable">Final Deliverable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -429,7 +440,7 @@ document.write(`
 <h2>Overall Process<a class="headerlink" href="#overall-process" title="Permalink to this heading">#</a></h2>
 <section id="data-preprocessing">
 <h3>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this heading">#</a></h3>
-<p>Firstly, we obtain data that delineates the greenhouse gas (GHG) emission factor per fixed amount of food in kilograms, as outlined by <a class="reference external" href="https://www.science.org/doi/10.1126/science.aaq0216">Poore, J., &amp; Nemeck, T. (2018)</a> Concurrently, nutritional information per food is sourced from <a class="reference external" href="https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/nutrient-data/canadian-nutrient-file-2015-download-files.html">Statistics Canada</a>. In the case where the food item is labeled with non-standard units such as <em>cases</em> and <em>packages</em>, additional steps are necessary to convert them into standard units.</p>
+<p>Firstly, we obtain data that delineates the greenhouse gas (GHG) emission factor per fixed amount of food in kilograms, as outlined by Poore, J., &amp; Nemeck, T. (2018) <a class="footnote-reference brackets" href="#ref1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> Concurrently, nutritional information per food is sourced from Statistics Canada <a class="footnote-reference brackets" href="#ref2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. In the case where the food item is labeled with non-standard units such as <em>cases</em> and <em>packages</em>, additional steps are necessary to convert them into standard units.</p>
 <p>Please open the following cell to view the flowchart illustrating the data preprocessing process.</p>
 <div class="cell tag_remove-input tag_hide-output docutils container">
 <details class="hide above-output">
@@ -438,7 +449,7 @@ document.write(`
 <span class="expanded">Hide code cell outputs</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="_images/e0d13e29fe773d54c5f429390ec13c6b1a0f254ed672455867e2c644a8629eb0.svg" src="_images/e0d13e29fe773d54c5f429390ec13c6b1a0f254ed672455867e2c644a8629eb0.svg" /></div>
+<img alt="_images/a6f00b767d5357b48eeea936f4e42bc6782a47bae8238d029f44c9f06b10ad51.svg" src="_images/a6f00b767d5357b48eeea936f4e42bc6782a47bae8238d029f44c9f06b10ad51.svg" /></div>
 </details>
 </div>
 </section>
@@ -536,7 +547,7 @@ document.write(`
 <span class="expanded">Hide code cell outputs</span>
 </summary>
 <div class="cell_output docutils container">
-<img alt="_images/c2e6b9bb8014614918e223b46522f3d17cdd3930a55796881664c268d1e74cf1.svg" src="_images/c2e6b9bb8014614918e223b46522f3d17cdd3930a55796881664c268d1e74cf1.svg" /></div>
+<img alt="_images/01b6fa0526da2b6e689bf7e47b61261293431fd65255a8f05fb4cd3bf1770035.svg" src="_images/01b6fa0526da2b6e689bf7e47b61261293431fd65255a8f05fb4cd3bf1770035.svg" /></div>
 </details>
 </div>
 </section>
@@ -556,9 +567,21 @@ document.write(`
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>As a next step, we can broaden our analysis beyond <span class="math notranslate nohighlight">\(\text{CO}^2\)</span> emissions to encompass other greenhouse gases, such as nitrogen dioxide and methane, originating from food production. By integrating the footprints of these gases, our application can offer users the flexibility to choose their focus, allowing them to select a specific greenhouse gas like nitrogen dioxide. Consequently, the application will provide alternative suggestions aimed at minimizing emissions of the chosen gas.</p>
 <p>On the technical front, we can introduce a login page, enabling users to maintain records of their emission reductions achieved through the Alternative Recipe platform. Additionally, recognizing the current instability of the <code class="docutils literal notranslate"><span class="pre">Send</span> <span class="pre">Email</span></code> button attributed to the use of a free API version, upgrading to a professional version with enhanced functionality can ensure the stability and reliability of the email notification feature. This enhancement would contribute to a more seamless user experience.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <!-- ```{bibliography}
 :style: unsrt
-``` --></section>
+``` --><hr class="footnotes docutils" />
+<aside class="footnote brackets" id="ref1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Poore, J., &amp; Nemecek, T. (2018). Reducing food’s environmental impacts through producers and consumers. Science, 360(6392), 987-992. <a class="reference external" href="https://doi.org/10.1126/science.aaq0216">https://doi.org/10.1126/science.aaq0216</a></p>
+</aside>
+<aside class="footnote brackets" id="ref2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Statistics Canada. (n.d.). Canadian Nutrient File 2015 Download Files. Retrieved May 2023, from <a class="reference external" href="https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/nutrient-data/canadian-nutrient-file-2015-download-files.html">https://www.canada.ca/en/health-canada/services/food-nutrition/healthy-eating/nutrient-data/canadian-nutrient-file-2015-download-files.html</a></p>
+</aside>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -633,6 +656,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-deliverable">Final Deliverable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 
