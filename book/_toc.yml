@@ -10,8 +10,22 @@ parts:
   chapters:
   - file: alternative-recipe
   - file: misinformation-analysis
-  - file: air-water-quality
-# - caption: Group Project
-#   chapters:
-#   - file: misinformation-analysis
+  - file: environmental-health
+    sections:
+    - file: air-quality
+      title: Air Quality in Canada
+    - file: water-quality
+      title: Water Quality in Canada
+- caption: Collaborative Projects
+  chapters:
+  - url: https://ubc-mds.github.io/fraud_detection/fraud_detection_full.html
+    title: Credit Card Fraud Detection
+- caption: Research Projects
+  chapters:
+  - url: https://github.com/jlee2843/CFFS-22-23
+    title: Climate Friendly Food Sustainability Labels
+  - url: https://github.com/jlee2843/SCOPE-GSE98394
+    title: The SCOPE Algorithm
+  - url: https://github.com/jlee2843/Peer-Review-22-23
+    title: Peer Review Analysis
 

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Air and Water Quality in Canada &#8212; Data Science Portfolio</title>
+    <title>Environmental Health in Canada &#8212; Jenny&#39;s Data Science Hub</title>
   
   
   
@@ -35,7 +35,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -154,8 +154,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo_new.png" class="logo__image only-light" alt="Data Science Portfolio - Home"/>
-    <script>document.write(`<img src="_static/logo_new.png" class="logo__image only-dark" alt="Data Science Portfolio - Home"/>`);</script>
+    <img src="_static/logo_new.png" class="logo__image only-light" alt="Jenny's Data Science Hub - Home"/>
+    <script>document.write(`<img src="_static/logo_new.png" class="logo__image only-dark" alt="Jenny's Data Science Hub - Home"/>`);</script>
   
   
 </a></div>
@@ -176,7 +176,18 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="alternative-recipe.html">Alternative Recipe</a></li>
 <li class="toctree-l1"><a class="reference internal" href="misinformation-analysis.html">Misinformation Analysis</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Air and Water Quality in Canada</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Environmental Health in Canada</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Collaborative Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ubc-mds.github.io/fraud_detection/fraud_detection_full.html">Credit Card Fraud Detection</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jlee2843/CFFS-22-23">Climate Friendly Food Sustainability Labels</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jlee2843/SCOPE-GSE98394">The SCOPE Algorithm</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jlee2843/Peer-Review-22-23">Peer Review Analysis</a></li>
 </ul>
 
     </div>
@@ -231,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/jlee2843/portfolio-book" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -248,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fair-water-quality.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jlee2843/portfolio-book/issues/new?title=Issue%20on%20page%20%2Fair-water-quality.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -349,7 +360,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -360,11 +373,26 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Air and Water Quality in Canada</h1>
+    <h1>Environmental Health in Canada</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Environmental Health in Canada</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-outline">Project Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-process">Overall Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#air-quality-in-canada">Air Quality in Canada</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -374,8 +402,62 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="air-and-water-quality-in-canada">
-<h1>Air and Water Quality in Canada<a class="headerlink" href="#air-and-water-quality-in-canada" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="environmental-health-in-canada">
+<h1>Environmental Health in Canada<a class="headerlink" href="#environmental-health-in-canada" title="Permalink to this heading">#</a></h1>
+<p>Jenny Lee, September 2021</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Kindly note that this web page solely offers a synopsis of the <strong>Alternative Recipe</strong> project. The comprehensive set of scripts and codes used in the project is available in the corresponding <a class="reference external" href="https://github.com/jlee2843/data-visualizations-portfolio/tree/main">GitHub repository</a>.</p>
+</div>
+<section id="project-outline">
+<h2>Project Outline<a class="headerlink" href="#project-outline" title="Permalink to this heading">#</a></h2>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Data science toolbox used in this project</p>
+<ul class="simple">
+<li><p>Data analysis</p></li>
+<li><p>Data cleaning and wrangling</p></li>
+<li><p>Interactive visualizations with <code class="docutils literal notranslate"><span class="pre">Plotly</span></code></p></li>
+</ul>
+</div>
+<p>In this project, I integrated three different types of datasets: air pollutant emissions, wildfires in Canada, and Canadian population estimates. The original data sources were as follows:</p>
+<ul class="simple">
+<li><p><strong>Air Pollution Emissions Across Provinces</strong>: Canada’s Air Pollutant Emissions Inventory<a class="footnote-reference brackets" href="#ref1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></li>
+<li><p><strong>Wildfires in Canada</strong>: Canadian National Fire Database<a class="footnote-reference brackets" href="#ref2" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p></li>
+<li><p><strong>Canadian Population Estimates</strong>: Population Estimates from Statistics Canada<a class="footnote-reference brackets" href="#ref3" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p></li>
+</ul>
+<p>The Government of Canada<a class="footnote-reference brackets" href="#ref4" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>  had identified sulfur oxides, nitrogen oxides, volatile organic compounds, particulate matter, carbon monoxide, ammonia, and ground-level ozone as the most common air contaminants in Canada.</p>
+<p>Canada’s Air Pollutant Inventory<a class="footnote-reference brackets" href="#ref5" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a> listed a total of thirteen air pollutants. For this project, the focus was on sulfur oxides, nitrogen oxides, volatile organic compounds, carbon monoxide, and ammonia—the pollutants recognized as the most common in Canada.</p>
+</section>
+<section id="overall-process">
+<h2>Overall Process<a class="headerlink" href="#overall-process" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="air-quality-in-canada">
+<h1>Air Quality in Canada<a class="headerlink" href="#air-quality-in-canada" title="Permalink to this heading">#</a></h1>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="ref1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Environment and Climate Change Canada. (n.d.). Canada’s Air Pollutant Emissions Inventory. Retrieved September 2021, from <a class="reference external" href="https://data.ec.gc.ca/data/substances/monitor/canada-s-air-pollutant-emissions-inventory/APEI_Tables_Canada_Provinces_Territories/?lang">https://data.ec.gc.ca/data/substances/monitor/canada-s-air-pollutant-emissions-inventory/APEI_Tables_Canada_Provinces_Territories/?lang</a></p>
+</aside>
+<aside class="footnote brackets" id="ref2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Canadian Forest Service. (n.d.). Canadian National Fire Database. Retrieved September 2021, from <a class="reference external" href="https://cwfis.cfs.nrcan.gc.ca/ha/nfdb">https://cwfis.cfs.nrcan.gc.ca/ha/nfdb</a></p>
+</aside>
+<aside class="footnote brackets" id="ref3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Statistics Canada. (n.d.). Population Estimates. Retrieved September 2021, from <a class="reference external" href="https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901">https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1710000901</a></p>
+</aside>
+<aside class="footnote brackets" id="ref4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Government of Canada. (n.d.). Common Contaminants - Air Pollution. Retrieved September 2021, from <a class="reference external" href="https://www.canada.ca/en/environment-climate-change/services/air-pollution/pollutants/common-contaminants.html">https://www.canada.ca/en/environment-climate-change/services/air-pollution/pollutants/common-contaminants.html</a></p>
+</aside>
+<aside class="footnote brackets" id="ref5" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>Environment and Climate Change Canada. (n.d.). Canada’s Air Pollutant Inventory. Retrieved September 2021, from <a class="reference external" href="https://data.ec.gc.ca/data/substances/monitor/canada-s-air-pollutant-emissions-inventory/APEI_Tables_Canada_Provinces_Territories/?lang">https://data.ec.gc.ca/data/substances/monitor/canada-s-air-pollutant-emissions-inventory/APEI_Tables_Canada_Provinces_Territories/?lang</a></p>
+</aside>
 </section>
 
     <script type="text/x-thebe-config">
@@ -423,6 +505,27 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Environmental Health in Canada</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-outline">Project Outline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-process">Overall Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#air-quality-in-canada">Air Quality in Canada</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
