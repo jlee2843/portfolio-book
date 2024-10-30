@@ -1,0 +1,2013 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>COVID-19 Study Analysis &#8212; Jenny&#39;s Data Science Hub</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=1f56ab05" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'covid-analysis';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Water Quality in Canada" href="water-quality.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/cube-logo.gif" class="logo__image only-light" alt="Jenny's Data Science Hub - Home"/>
+    <script>document.write(`<img src="_static/cube-logo.gif" class="logo__image only-dark" alt="Jenny's Data Science Hub - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="introduction.html">
+                    About Me
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contents.html">List of Projects</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Individual Projects</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="alternative-recipe.html">Alternative Recipe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="misinformation-analysis.html">Misinformation Analysis</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="environmental-health.html">Environmental Health in Canada</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="air-quality.html">Air Quality in Canada</a></li>
+<li class="toctree-l2"><a class="reference internal" href="water-quality.html">Water Quality in Canada</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">COVID-19 Study Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Collaborative Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ubc-mds.github.io/fraud_detection/fraud_detection_full.html">Credit Card Fraud Detection</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Research Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jlee2843/CFFS-22-23">Climate Friendly Food Sustainability Labels</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jlee2843/SCOPE-GSE98394">The SCOPE Algorithm</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/jlee2843/Peer-Review-22-23">Peer Review Analysis</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jlee2843/portfolio-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jlee2843/portfolio-book/issues/new?title=Issue%20on%20page%20%2Fcovid-analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/covid-analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>COVID-19 Study Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">1. Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-missing-values">1.1 Count Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#join-the-two-data-frames">1.2 Join the Two Data Frames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-unique-proteins-per-patient">1.3 Number of Unique Proteins per Patient</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-testing">2. Statistical Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npx-level-variations-associated-with-covid-status">2.1 NPX Level Variations Associated with COVID Status</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis">2.1.1 Hypothesis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">2.1.2 Assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-the-homotenity-of-variances-using-levene-s-test">2.1.2.1 Checking for the homotenity of variances using Levene’s Test</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-normality-using-shapiro-wilk-test">2.1.2.2 Checking for normality using Shapiro-Wilk test</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-interpretation">2.1.3 Results and Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-pre-existing-health-conditions-on-covid-presence">2.2 Impact of Pre-Existing Health Conditions on COVID Presence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1 Hypothesis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2 Results and Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-age-and-bmi-on-covid-19-risk">2.3 Influence of Age and BMI on COVID-19 Risk</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.1 Hypothesis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2 Results and Interpretation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="covid-19-study-analysis">
+<h1>COVID-19 Study Analysis<a class="headerlink" href="#covid-19-study-analysis" title="Link to this heading">#</a></h1>
+<figure class="align-default">
+<img alt="_images/vaccine.jpg" src="_images/vaccine.jpg" />
+</figure>
+<div class="admonition-notes admonition">
+<p class="admonition-title">Notes</p>
+<p>The dataset analyzed in this study was obtained from Olink’s MGH COVID-19 study site <a class="footnote-reference brackets" href="#ref1" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>. The primary objective was to create informative visualizations that effectively highlight the dataset’s key characteristics.</p>
+<p>To enhance clarity and readability, most code cells have been collapsed. Simply expand the drop-down sections to view the underlying code.</p>
+</div>
+<section id="exploratory-data-analysis">
+<h2>1. Exploratory Data Analysis<a class="headerlink" href="#exploratory-data-analysis" title="Link to this heading">#</a></h2>
+<p>This section of the report provides an overview of the preliminary data analysis procedures. The steps involved include loading the dataset, followed by a thorough inspection of its structure to assess key characteristics such as data types, missing values, and overall organization.</p>
+<div class="cell tag_hide-input tag_scroll-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">patient_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.delim</span><span class="p">(</span><span class="s">&quot;/Users/jennylee/Downloads/MGH_Olink_COVID_Apr_27_2021/MGH_COVID_Clinical_Info.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;;&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">patient_df</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;This dataframe has &quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">patient_df</span><span class="p">),</span><span class="w"> </span><span class="s">&quot; rows in total.&quot;</span><span class="p">))</span>
+<span class="nf">glimpse</span><span class="p">(</span><span class="n">patient_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 44</caption>
+<thead>
+	<tr><th></th><th scope=col>subject_id</th><th scope=col>COVID</th><th scope=col>Age_cat</th><th scope=col>BMI_cat</th><th scope=col>HEART</th><th scope=col>LUNG</th><th scope=col>KIDNEY</th><th scope=col>DIABETES</th><th scope=col>HTN</th><th scope=col>IMMUNO</th><th scope=col>⋯</th><th scope=col>crp_3_cat</th><th scope=col>ddimer_3_cat</th><th scope=col>ldh_3_cat</th><th scope=col>abs_neut_7_cat</th><th scope=col>abs_lymph_7_cat</th><th scope=col>abs_mono_7_cat</th><th scope=col>creat_7_cat</th><th scope=col>crp_7_cat</th><th scope=col>ddimer_7_cat</th><th scope=col>ldh_7_cat</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>⋯</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>1</td><td> 1</td><td> 1</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><th scope=row>2</th><td>2</td><td>1</td><td>2</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>2</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><th scope=row>3</th><td>3</td><td>1</td><td>3</td><td>4</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>3</td><td> 2</td><td> 3</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><th scope=row>4</th><td>4</td><td>1</td><td>1</td><td>2</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>2</td><td> 2</td><td> 3</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr>
+	<tr><th scope=row>5</th><td>5</td><td>1</td><td>3</td><td>3</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>⋯</td><td>5</td><td> 3</td><td>NA</td><td> 3</td><td> 5</td><td> 3</td><td> 1</td><td> 4</td><td> 4</td><td> 3</td></tr>
+	<tr><th scope=row>6</th><td>6</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>4</td><td> 3</td><td> 5</td><td> 3</td><td> 3</td><td> 2</td><td> 1</td><td> 4</td><td> 5</td><td> 5</td></tr>
+</tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;This dataframe has 384 rows in total.&quot;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rows: 384
+Columns: 44
+$ subject_id      &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,…
+$ COVID           &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, …
+$ Age_cat         &lt;int&gt; 1, 2, 3, 1, 3, 1, 2, 4, 5, 2, 3, 2, 4, 4, 4, 3, 3, 2, …
+$ BMI_cat         &lt;int&gt; 4, 2, 4, 2, 3, 1, 2, 3, 2, 2, 2, 4, 4, 3, 2, 3, 1, 2, …
+$ HEART           &lt;int&gt; 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, …
+$ LUNG            &lt;int&gt; 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, …
+$ KIDNEY          &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, …
+$ DIABETES        &lt;int&gt; 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, …
+$ HTN             &lt;int&gt; 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, …
+$ IMMUNO          &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, …
+$ Resp_Symp       &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, …
+$ Fever_Sympt     &lt;int&gt; 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, …
+$ GI_Symp         &lt;int&gt; 1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, …
+$ D0_draw         &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …
+$ D3_draw         &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1, 1, …
+$ D7_draw         &lt;int&gt; 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, …
+$ DE_draw         &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, …
+$ Acuity_0        &lt;int&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 5, 2, 3, 3, 2, 2, 4, 4, …
+$ Acuity_3        &lt;int&gt; 4, 3, 3, 3, 3, 3, 3, 3, 3, 4, 5, 2, 3, 2, 2, 2, 4, 4, …
+$ Acuity_7        &lt;int&gt; 5, 5, 5, 5, 3, 3, 5, 5, 5, 5, 5, 2, 5, 2, 2, 3, 5, 5, …
+$ Acuity_28       &lt;int&gt; 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 2, 1, 5, 5, 5, …
+$ Acuity_max      &lt;int&gt; 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 2, 3, 2, 1, 2, 4, 4, …
+$ abs_neut_0_cat  &lt;int&gt; 3, 3, 3, 2, 3, 3, 3, 5, 3, 1, 3, 3, 2, 3, 5, 4, 3, 3, …
+$ abs_lymph_0_cat &lt;int&gt; 2, 3, 3, 2, 5, 2, 2, 1, 2, 3, 3, 2, 3, 1, 1, 4, 3, 4, …
+$ abs_mono_0_cat  &lt;int&gt; 2, 3, 2, 2, 3, 1, 3, 4, 3, 2, 2, 2, 3, 2, 5, 3, 2, 1, …
+$ creat_0_cat     &lt;int&gt; 2, 2, 2, 2, 2, 2, 2, 2, 5, 1, 2, 1, 2, 4, 2, 3, 2, 1, …
+$ crp_0_cat       &lt;int&gt; 1, 3, 4, 1, 4, 3, 5, 2, 3, 1, NA, 5, 1, 4, 5, 1, 3, 2,…
+$ ddimer_0_cat    &lt;int&gt; 1, 2, 3, 2, 3, 3, 3, 3, 4, 1, NA, 2, 3, 3, 3, 4, 2, 2,…
+$ ldh_0_cat       &lt;int&gt; 2, 2, 4, 2, 3, 4, 3, 2, 5, 2, NA, 5, 2, 2, 3, 5, 4, 3,…
+$ Trop_72h        &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, …
+$ abs_neut_3_cat  &lt;int&gt; 2, 2, 3, 3, 3, 3, 3, 3, 2, 2, NA, 4, 2, 2, 5, 3, 3, 2,…
+$ abs_lymph_3_cat &lt;int&gt; 4, 4, 4, 4, 5, 4, 2, 3, 2, 3, NA, 1, 4, 2, 2, 1, 3, 4,…
+$ abs_mono_3_cat  &lt;int&gt; 2, 3, 3, 2, 2, 1, 2, 3, 2, 2, NA, 2, 3, 2, 2, 2, 3, 3,…
+$ creat_3_cat     &lt;int&gt; 1, 1, 2, 1, 1, 1, 2, 2, 3, 1, NA, 3, 1, 4, 1, 2, 1, 1,…
+$ crp_3_cat       &lt;int&gt; 1, 2, 3, 2, 5, 4, 4, 3, 3, NA, NA, 4, NA, 4, 3, NA, 3,…
+$ ddimer_3_cat    &lt;int&gt; 1, NA, 2, 2, 3, 3, 3, 2, 3, NA, NA, 4, NA, 2, 3, NA, 3…
+$ ldh_3_cat       &lt;int&gt; 1, NA, 3, 3, NA, 5, 3, 1, 2, NA, NA, 4, NA, 2, 2, NA, …
+$ abs_neut_7_cat  &lt;int&gt; NA, NA, NA, NA, 3, 3, NA, NA, NA, NA, NA, 3, NA, 2, 5,…
+$ abs_lymph_7_cat &lt;int&gt; NA, NA, NA, NA, 5, 3, NA, NA, NA, NA, NA, 3, NA, 1, 2,…
+$ abs_mono_7_cat  &lt;int&gt; NA, NA, NA, NA, 3, 2, NA, NA, NA, NA, NA, 3, NA, 2, 5,…
+$ creat_7_cat     &lt;int&gt; NA, NA, NA, NA, 1, 1, NA, NA, NA, NA, NA, 3, NA, 4, 1,…
+$ crp_7_cat       &lt;int&gt; NA, NA, NA, NA, 4, 4, NA, NA, NA, NA, NA, NA, NA, 1, N…
+$ ddimer_7_cat    &lt;int&gt; NA, NA, NA, NA, 4, 5, NA, NA, NA, NA, NA, 4, NA, 2, 4,…
+$ ldh_7_cat       &lt;int&gt; NA, NA, NA, NA, 3, 5, NA, NA, NA, NA, NA, 3, NA, 3, NA…
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input tag_scroll-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">protein_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.delim</span><span class="p">(</span><span class="s">&quot;/Users/jennylee/Downloads/MGH_Olink_COVID_Apr_27_2021/MGH_COVID_OLINK_NPX.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">header</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">sep</span><span class="o">=</span><span class="s">&quot;;&quot;</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">protein_df</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;This dataframe has &quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">protein_df</span><span class="p">),</span><span class="w"> </span><span class="s">&quot; rows in total.&quot;</span><span class="p">))</span>
+<span class="nf">glimpse</span><span class="p">(</span><span class="n">protein_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 16</caption>
+<thead>
+	<tr><th></th><th scope=col>SampleID</th><th scope=col>subject_id</th><th scope=col>Timepoint</th><th scope=col>Index</th><th scope=col>OlinkID</th><th scope=col>UniProt</th><th scope=col>Assay</th><th scope=col>MissingFreq</th><th scope=col>Panel</th><th scope=col>Panel_Lot_Nr</th><th scope=col>PlateID</th><th scope=col>QC_Warning</th><th scope=col>Assay_Warning</th><th scope=col>Normalization</th><th scope=col>LOD</th><th scope=col>NPX</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1_D0</td><td>1</td><td>D0</td><td>56</td><td>OID21311</td><td>Q9BTE6</td><td>AARSD1 </td><td>0.0000</td><td>Oncology       </td><td>B04404</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-1.0810</td><td> 1.9024</td></tr>
+	<tr><th scope=row>2</th><td>1_D0</td><td>1</td><td>D0</td><td>56</td><td>OID20921</td><td>Q96IU4</td><td>ABHD14B</td><td>0.0000</td><td>Neurology      </td><td>B04406</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-1.4574</td><td>-0.2625</td></tr>
+	<tr><th scope=row>3</th><td>1_D0</td><td>1</td><td>D0</td><td>56</td><td>OID21280</td><td>P00519</td><td>ABL1   </td><td>0.0013</td><td>Oncology       </td><td>B04404</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-2.4697</td><td> 0.2659</td></tr>
+	<tr><th scope=row>4</th><td>1_D0</td><td>1</td><td>D0</td><td>56</td><td>OID21269</td><td>P09110</td><td>ACAA1  </td><td>0.1248</td><td>Oncology       </td><td>B04404</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-0.2027</td><td> 0.5311</td></tr>
+	<tr><th scope=row>5</th><td>1_D0</td><td>1</td><td>D0</td><td>56</td><td>OID20159</td><td>P16112</td><td>ACAN   </td><td>0.0000</td><td>Cardiometabolic</td><td>B04405</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-3.3481</td><td>-2.0366</td></tr>
+	<tr><th scope=row>6</th><td>1_D0</td><td>1</td><td>D0</td><td>56</td><td>OID20105</td><td>Q9BYF1</td><td>ACE2   </td><td>0.0561</td><td>Cardiometabolic</td><td>B04405</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-1.9055</td><td>-1.4261</td></tr>
+</tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;This dataframe has 1271808 rows in total.&quot;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rows: 1,271,808
+Columns: 16
+$ SampleID      &lt;chr&gt; &quot;1_D0&quot;, &quot;1_D0&quot;, &quot;1_D0&quot;, &quot;1_D0&quot;, &quot;1_D0&quot;, &quot;1_D0&quot;, &quot;1_D0&quot;, …
+$ subject_id    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+$ Timepoint     &lt;chr&gt; &quot;D0&quot;, &quot;D0&quot;, &quot;D0&quot;, &quot;D0&quot;, &quot;D0&quot;, &quot;D0&quot;, &quot;D0&quot;, &quot;D0&quot;, &quot;D0&quot;, &quot;D…
+$ Index         &lt;int&gt; 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, 56, …
+$ OlinkID       &lt;chr&gt; &quot;OID21311&quot;, &quot;OID20921&quot;, &quot;OID21280&quot;, &quot;OID21269&quot;, &quot;OID2015…
+$ UniProt       &lt;chr&gt; &quot;Q9BTE6&quot;, &quot;Q96IU4&quot;, &quot;P00519&quot;, &quot;P09110&quot;, &quot;P16112&quot;, &quot;Q9BYF…
+$ Assay         &lt;chr&gt; &quot;AARSD1&quot;, &quot;ABHD14B&quot;, &quot;ABL1&quot;, &quot;ACAA1&quot;, &quot;ACAN&quot;, &quot;ACE2&quot;, &quot;A…
+$ MissingFreq   &lt;dbl&gt; 0.0000, 0.0000, 0.0013, 0.1248, 0.0000, 0.0561, 0.8127, …
+$ Panel         &lt;chr&gt; &quot;Oncology&quot;, &quot;Neurology&quot;, &quot;Oncology&quot;, &quot;Oncology&quot;, &quot;Cardio…
+$ Panel_Lot_Nr  &lt;chr&gt; &quot;B04404&quot;, &quot;B04406&quot;, &quot;B04404&quot;, &quot;B04404&quot;, &quot;B04405&quot;, &quot;B0440…
+$ PlateID       &lt;chr&gt; &quot;20200772_Plate5&quot;, &quot;20200772_Plate5&quot;, &quot;20200772_Plate5&quot;,…
+$ QC_Warning    &lt;chr&gt; &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, …
+$ Assay_Warning &lt;chr&gt; &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, &quot;PASS&quot;, …
+$ Normalization &lt;chr&gt; &quot;Intensity&quot;, &quot;Intensity&quot;, &quot;Intensity&quot;, &quot;Intensity&quot;, &quot;Int…
+$ LOD           &lt;dbl&gt; -1.0810, -1.4574, -2.4697, -0.2027, -3.3481, -1.9055, 0.…
+$ NPX           &lt;dbl&gt; 1.9024, -0.2625, 0.2659, 0.5311, -2.0366, -1.4261, -0.24…
+</pre></div>
+</div>
+</div>
+</div>
+<section id="count-missing-values">
+<h3>1.1 Count Missing Values<a class="headerlink" href="#count-missing-values" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">count_missing_values</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">missing_counts</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">colSums</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+<span class="w">      </span><span class="n">missing_counts_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="w">            </span><span class="n">Column</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">missing_counts</span><span class="p">),</span>
+<span class="w">            </span><span class="n">Missing_Count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">missing_counts</span><span class="p">)</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">      </span><span class="nf">return</span><span class="p">(</span><span class="n">missing_counts_df</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nf">count_missing_values</span><span class="p">(</span><span class="n">protein_df</span><span class="p">)</span>
+<span class="nf">count_missing_values</span><span class="p">(</span><span class="n">patient_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 16 × 2</caption>
+<thead>
+	<tr><th scope=col>Column</th><th scope=col>Missing_Count</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>SampleID     </td><td>     0</td></tr>
+	<tr><td>subject_id   </td><td>117760</td></tr>
+	<tr><td>Timepoint    </td><td>     0</td></tr>
+	<tr><td>Index        </td><td>     0</td></tr>
+	<tr><td>OlinkID      </td><td>     0</td></tr>
+	<tr><td>UniProt      </td><td>     0</td></tr>
+	<tr><td>Assay        </td><td>     0</td></tr>
+	<tr><td>MissingFreq  </td><td>     0</td></tr>
+	<tr><td>Panel        </td><td>     0</td></tr>
+	<tr><td>Panel_Lot_Nr </td><td>     0</td></tr>
+	<tr><td>PlateID      </td><td>     0</td></tr>
+	<tr><td>QC_Warning   </td><td>     0</td></tr>
+	<tr><td>Assay_Warning</td><td>     0</td></tr>
+	<tr><td>Normalization</td><td>     0</td></tr>
+	<tr><td>LOD          </td><td>     0</td></tr>
+	<tr><td>NPX          </td><td>     0</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 44 × 2</caption>
+<thead>
+	<tr><th scope=col>Column</th><th scope=col>Missing_Count</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>subject_id     </td><td>  0</td></tr>
+	<tr><td>COVID          </td><td>  0</td></tr>
+	<tr><td>Age_cat        </td><td>  0</td></tr>
+	<tr><td>BMI_cat        </td><td>  0</td></tr>
+	<tr><td>HEART          </td><td>  0</td></tr>
+	<tr><td>LUNG           </td><td>  0</td></tr>
+	<tr><td>KIDNEY         </td><td>  0</td></tr>
+	<tr><td>DIABETES       </td><td>  0</td></tr>
+	<tr><td>HTN            </td><td>  0</td></tr>
+	<tr><td>IMMUNO         </td><td>  0</td></tr>
+	<tr><td>Resp_Symp      </td><td>  0</td></tr>
+	<tr><td>Fever_Sympt    </td><td>  0</td></tr>
+	<tr><td>GI_Symp        </td><td>  0</td></tr>
+	<tr><td>D0_draw        </td><td>  1</td></tr>
+	<tr><td>D3_draw        </td><td>  1</td></tr>
+	<tr><td>D7_draw        </td><td>  1</td></tr>
+	<tr><td>DE_draw        </td><td>  1</td></tr>
+	<tr><td>Acuity_0       </td><td>  0</td></tr>
+	<tr><td>Acuity_3       </td><td>  0</td></tr>
+	<tr><td>Acuity_7       </td><td>  0</td></tr>
+	<tr><td>Acuity_28      </td><td>  0</td></tr>
+	<tr><td>Acuity_max     </td><td>  0</td></tr>
+	<tr><td>abs_neut_0_cat </td><td>  4</td></tr>
+	<tr><td>abs_lymph_0_cat</td><td>  5</td></tr>
+	<tr><td>abs_mono_0_cat </td><td>  8</td></tr>
+	<tr><td>creat_0_cat    </td><td>  3</td></tr>
+	<tr><td>crp_0_cat      </td><td> 18</td></tr>
+	<tr><td>ddimer_0_cat   </td><td> 26</td></tr>
+	<tr><td>ldh_0_cat      </td><td> 22</td></tr>
+	<tr><td>Trop_72h       </td><td>  0</td></tr>
+	<tr><td>abs_neut_3_cat </td><td>106</td></tr>
+	<tr><td>abs_lymph_3_cat</td><td>107</td></tr>
+	<tr><td>abs_mono_3_cat </td><td>110</td></tr>
+	<tr><td>creat_3_cat    </td><td>105</td></tr>
+	<tr><td>crp_3_cat      </td><td>156</td></tr>
+	<tr><td>ddimer_3_cat   </td><td>175</td></tr>
+	<tr><td>ldh_3_cat      </td><td>191</td></tr>
+	<tr><td>abs_neut_7_cat </td><td>205</td></tr>
+	<tr><td>abs_lymph_7_cat</td><td>206</td></tr>
+	<tr><td>abs_mono_7_cat </td><td>206</td></tr>
+	<tr><td>creat_7_cat    </td><td>193</td></tr>
+	<tr><td>crp_7_cat      </td><td>240</td></tr>
+	<tr><td>ddimer_7_cat   </td><td>251</td></tr>
+	<tr><td>ldh_7_cat      </td><td>269</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rows_before_drop</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">protein_df</span><span class="p">)</span>
+<span class="n">protein_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">protein_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">filter</span><span class="p">(</span><span class="o">!</span><span class="nf">is.na</span><span class="p">(</span><span class="n">subject_id</span><span class="p">))</span>
+<span class="n">rows_after_drop</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">protein_df</span><span class="p">)</span>
+<span class="n">remaining_rows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rows_before_drop</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rows_after_drop</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;In total, &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">remaining_rows</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; rows have been dropped.&quot;</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">protein_df</span><span class="p">),</span><span class="w"> </span><span class="s">&quot; rows remain.&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;In total, 117760 rows have been dropped.&quot;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;1154048 rows remain.&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="join-the-two-data-frames">
+<h3>1.2 Join the Two Data Frames<a class="headerlink" href="#join-the-two-data-frames" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">join_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">inner_join</span><span class="p">(</span><span class="n">patient_df</span><span class="p">,</span><span class="w"> </span><span class="n">protein_df</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="o">=</span><span class="s">&quot;subject_id&quot;</span><span class="p">)</span>
+<span class="nf">nrow</span><span class="p">(</span><span class="n">join_df</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">join_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">1154048</div><div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 59</caption>
+<thead>
+	<tr><th></th><th scope=col>subject_id</th><th scope=col>COVID</th><th scope=col>Age_cat</th><th scope=col>BMI_cat</th><th scope=col>HEART</th><th scope=col>LUNG</th><th scope=col>KIDNEY</th><th scope=col>DIABETES</th><th scope=col>HTN</th><th scope=col>IMMUNO</th><th scope=col>⋯</th><th scope=col>Assay</th><th scope=col>MissingFreq</th><th scope=col>Panel</th><th scope=col>Panel_Lot_Nr</th><th scope=col>PlateID</th><th scope=col>QC_Warning</th><th scope=col>Assay_Warning</th><th scope=col>Normalization</th><th scope=col>LOD</th><th scope=col>NPX</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>⋯</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>AARSD1 </td><td>0.0000</td><td>Oncology       </td><td>B04404</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-1.0810</td><td> 1.9024</td></tr>
+	<tr><th scope=row>2</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>ABHD14B</td><td>0.0000</td><td>Neurology      </td><td>B04406</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-1.4574</td><td>-0.2625</td></tr>
+	<tr><th scope=row>3</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>ABL1   </td><td>0.0013</td><td>Oncology       </td><td>B04404</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-2.4697</td><td> 0.2659</td></tr>
+	<tr><th scope=row>4</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>ACAA1  </td><td>0.1248</td><td>Oncology       </td><td>B04404</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-0.2027</td><td> 0.5311</td></tr>
+	<tr><th scope=row>5</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>ACAN   </td><td>0.0000</td><td>Cardiometabolic</td><td>B04405</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-3.3481</td><td>-2.0366</td></tr>
+	<tr><th scope=row>6</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>ACE2   </td><td>0.0561</td><td>Cardiometabolic</td><td>B04405</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-1.9055</td><td>-1.4261</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="number-of-unique-proteins-per-patient">
+<h3>1.3 Number of Unique Proteins per Patient<a class="headerlink" href="#number-of-unique-proteins-per-patient" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">num_patient</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">patient_df</span><span class="o">$</span><span class="n">subject_id</span><span class="p">))</span>
+<span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;The study involves a total of &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num_patient</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; unique patients.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">'The study involves a total of 384 unique patients.'</div></div>
+</div>
+<p>In this section, I will examine the relationship between the unique entries in the <code class="docutils literal notranslate"><span class="pre">UniProt</span></code> and <code class="docutils literal notranslate"><span class="pre">Assay</span></code> columns of the <code class="docutils literal notranslate"><span class="pre">protein_df</span></code> dataset. To gain insights into how different proteins may influence the presence of COVID, I will analyze whether significant differences exist between these two columns. This analysis aims to identify specific proteins that play a crucial role in the context of COVID presence.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">count_unique_entries_per_patient</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">col_name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">            </span><span class="nf">group_by</span><span class="p">(</span><span class="n">subject_id</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">            </span><span class="nf">summarise</span><span class="p">(</span><span class="o">!!</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;unique_&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">col_name</span><span class="p">)</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nf">n_distinct</span><span class="p">(</span><span class="n">.data</span><span class="p">[[</span><span class="n">col_name</span><span class="p">]]))</span>
+<span class="w">      </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Total number of unique &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">col_name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; entries is: &quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="nf">unique</span><span class="p">(</span><span class="n">result</span><span class="p">[[</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;unique_&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">col_name</span><span class="p">)]]))))</span>
+<span class="w">      </span><span class="nf">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="nf">count_unique_entries_per_patient</span><span class="p">(</span><span class="n">join_df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;UniProt&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Total number of unique UniProt entries is: 1&quot;
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 2</caption>
+<thead>
+	<tr><th scope=col>subject_id</th><th scope=col>unique_UniProt</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td>1463</td></tr>
+	<tr><td>2</td><td>1463</td></tr>
+	<tr><td>3</td><td>1463</td></tr>
+	<tr><td>4</td><td>1463</td></tr>
+	<tr><td>5</td><td>1463</td></tr>
+	<tr><td>6</td><td>1463</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="nf">count_unique_entries_per_patient</span><span class="p">(</span><span class="n">join_df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Assay&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Total number of unique Assay entries is: 1&quot;
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 2</caption>
+<thead>
+	<tr><th scope=col>subject_id</th><th scope=col>unique_Assay</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td>1463</td></tr>
+	<tr><td>2</td><td>1463</td></tr>
+	<tr><td>3</td><td>1463</td></tr>
+	<tr><td>4</td><td>1463</td></tr>
+	<tr><td>5</td><td>1463</td></tr>
+	<tr><td>6</td><td>1463</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p>We can confidently state that a total of 384 patients were tested for the presence of COVID-19 virus and measured NPX levels of 1463 unique proteins. Notably, the number of unique entries identified in both the <code class="docutils literal notranslate"><span class="pre">UniProt</span></code> and <code class="docutils literal notranslate"><span class="pre">Assay</span></code> columns is equal (1493), indicating a consistent representation of proteins across these two columns.</p>
+</section>
+</section>
+<section id="statistical-testing">
+<h2>2. Statistical Testing<a class="headerlink" href="#statistical-testing" title="Link to this heading">#</a></h2>
+<p>In this section, I will focus on three key aspects of the studies:</p>
+<ol class="arabic simple">
+<li><p><strong>Top 10 Proteins</strong>: Analyzing the proteins that exhibit significant differences in NPX levels based on the presence of COVID-19.</p></li>
+<li><p><strong>Pre-existing Diseases</strong>: Investigating how certain pre-existing conditions significantly influence the presence of COVID-19.</p></li>
+<li><p><strong>Demographic Factors</strong>: Examining the influence of age and BMI on the presence of COVID-19.</p></li>
+</ol>
+<section id="npx-level-variations-associated-with-covid-status">
+<h3>2.1 NPX Level Variations Associated with COVID Status<a class="headerlink" href="#npx-level-variations-associated-with-covid-status" title="Link to this heading">#</a></h3>
+<p>Given that there are 1493 unique proteins studied in this dataset, visualizing the differences in NPX levels for all proteins based on the presence of COVID-19 is impractical. Therefore, I will focus on identifying the top 10 proteins that demonstrate the most significant <strong>effect size</strong> using a <strong>two-sample T-test</strong>.</p>
+<p>Effect size provides a measure of the magnitude of mean differences between the independent samples. In this context, achieving a large effect size while rejecting the null hypothesis (<span class="math notranslate nohighlight">\(H_0\)</span>) indicates that the NPX levels of the two groups (COVID-19 positive and negative) are significantly different. This analysis highlights the statistical significance of the differences observed and underscores the importance of these proteins in relation to COVID-19.</p>
+<section id="hypothesis">
+<h4>2.1.1 Hypothesis<a class="headerlink" href="#hypothesis" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: There is no significant difference in the mean NPX levels of proteins between COVID-positive and COVID-negative patients.</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_A\)</span>: There is a significant difference in the mean NPX levels of proteins between COVID-positive and COVID-negative patients.</p></li>
+</ul>
+</section>
+<section id="assumptions">
+<h4>2.1.2 Assumptions<a class="headerlink" href="#assumptions" title="Link to this heading">#</a></h4>
+<p>To implement T-test to test our hypothesis, we must check some assumptions to ensure that our sample is suitable to be used for T-test.</p>
+<ul class="simple">
+<li><p><strong>Independence of Observations</strong>: The samples are independent of each other.</p></li>
+<li><p><strong>Normality</strong>: The data in ech group should be approximately normally distributed. Use Shapiro-Wilk normality test. Null hypothesis of Shapiro-Wilk normality test states that the groups are normally distributed.</p></li>
+<li><p><strong>Homogenity of Variance</strong>: The variances in two groups should be roughly equal. Use Levene’s test. Null hypothesis of Levene’s test states that the variances of the two groups compared are equal.</p></li>
+</ul>
+<section id="checking-for-the-homotenity-of-variances-using-levene-s-test">
+<h5>2.1.2.1 Checking for the homotenity of variances using Levene’s Test<a class="headerlink" href="#checking-for-the-homotenity-of-variances-using-levene-s-test" title="Link to this heading">#</a></h5>
+<div class="cell tag_scroll-output tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">join_df</span><span class="o">$</span><span class="n">COVID</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">join_df</span><span class="o">$</span><span class="n">COVID</span><span class="p">)</span>
+
+<span class="n">homogenity_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">join_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">group_by</span><span class="p">(</span><span class="n">UniProt</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">summarise</span><span class="p">(</span><span class="n">levene_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="nf">leveneTest</span><span class="p">(</span><span class="n">NPX</span><span class="o">~</span><span class="n">COVID</span><span class="p">)))</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">mutate</span><span class="p">(</span><span class="n">levene_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="n">levene_test</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">))</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">unnest</span><span class="p">(</span><span class="n">levene_test</span><span class="p">)</span>
+
+<span class="n">homogenity_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">homogenity_results</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">filter</span><span class="p">(</span><span class="n">p.value</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span><span class="w"> </span>
+
+<span class="n">homogenity_list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">homogenity_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">pull</span><span class="p">(</span><span class="n">UniProt</span><span class="p">)</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">homogenity_df</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">homogenity_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>UniProt</th><th scope=col>statistic</th><th scope=col>p.value</th><th scope=col>df</th><th scope=col>df.residual</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>A1E959</td><td>1.75031725</td><td>0.18622357</td><td>1</td><td>782</td></tr>
+	<tr><th scope=row>2</th><td>A1L4H1</td><td>0.16795464</td><td>0.68204825</td><td>1</td><td>782</td></tr>
+	<tr><th scope=row>3</th><td>A4D1B5</td><td>0.09018745</td><td>0.76401880</td><td>1</td><td>782</td></tr>
+	<tr><th scope=row>4</th><td>A6NI73</td><td>2.84440403</td><td>0.09209144</td><td>1</td><td>782</td></tr>
+	<tr><th scope=row>5</th><td>B1AKI9</td><td>0.80558995</td><td>0.36970354</td><td>1</td><td>782</td></tr>
+	<tr><th scope=row>6</th><td>O00161</td><td>0.34160940</td><td>0.55907029</td><td>1</td><td>782</td></tr>
+</tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   [1] &quot;A1E959&quot;        &quot;A1L4H1&quot;        &quot;A4D1B5&quot;        &quot;A6NI73&quot;       
+   [5] &quot;B1AKI9&quot;        &quot;O00161&quot;        &quot;O00175&quot;        &quot;O00182&quot;       
+   [9] &quot;O00186&quot;        &quot;O00214&quot;        &quot;O00220&quot;        &quot;O00221&quot;       
+  [13] &quot;O00233&quot;        &quot;O00241&quot;        &quot;O00244&quot;        &quot;O00253&quot;       
+  [17] &quot;O00273&quot;        &quot;O00292&quot;        &quot;O00300&quot;        &quot;O00308&quot;       
+  [21] &quot;O00339&quot;        &quot;O00399&quot;        &quot;O00451&quot;        &quot;O00468&quot;       
+  [25] &quot;O00533&quot;        &quot;O00548&quot;        &quot;O00559&quot;        &quot;O00584&quot;       
+  [29] &quot;O00585&quot;        &quot;O00592&quot;        &quot;O00622&quot;        &quot;O00626&quot;       
+  [33] &quot;O14558&quot;        &quot;O14579&quot;        &quot;O14594&quot;        &quot;O14618&quot;       
+  [37] &quot;O14625&quot;        &quot;O14662&quot;        &quot;O14737&quot;        &quot;O14763&quot;       
+  [41] &quot;O14786&quot;        &quot;O14788&quot;        &quot;O14793&quot;        &quot;O14828&quot;       
+  [45] &quot;O14867&quot;        &quot;O14904&quot;        &quot;O14917&quot;        &quot;O14944&quot;       
+  [49] &quot;O14964&quot;        &quot;O14974&quot;        &quot;O15116&quot;        &quot;O15117&quot;       
+  [53] &quot;O15123&quot;        &quot;O15169&quot;        &quot;O15232&quot;        &quot;O15263&quot;       
+  [57] &quot;O15354&quot;        &quot;O15357&quot;        &quot;O15389&quot;        &quot;O15444&quot;       
+  [61] &quot;O15455&quot;        &quot;O43155&quot;        &quot;O43186&quot;        &quot;O43278&quot;       
+  [65] &quot;O43464&quot;        &quot;O43505&quot;        &quot;O43508&quot;        &quot;O43524&quot;       
+  [69] &quot;O43557&quot;        &quot;O43561&quot;        &quot;O43570&quot;        &quot;O43598&quot;       
+  [73] &quot;O43699&quot;        &quot;O43707&quot;        &quot;O43715&quot;        &quot;O43736&quot;       
+  [77] &quot;O43827&quot;        &quot;O43895&quot;        &quot;O43927&quot;        &quot;O60240&quot;       
+  [81] &quot;O60242&quot;        &quot;O60462&quot;        &quot;O60496&quot;        &quot;O60635&quot;       
+  [85] &quot;O60664&quot;        &quot;O60763&quot;        &quot;O60828&quot;        &quot;O60884&quot;       
+  [89] &quot;O60907&quot;        &quot;O60934&quot;        &quot;O75015&quot;        &quot;O75144&quot;       
+  [93] &quot;O75326&quot;        &quot;O75354&quot;        &quot;O75356&quot;        &quot;O75462&quot;       
+  [97] &quot;O75475&quot;        &quot;O75493&quot;        &quot;O75509&quot;        &quot;O75563&quot;       
+ [101] &quot;O75569&quot;        &quot;O75629&quot;        &quot;O75695&quot;        &quot;O75791&quot;       
+ [105] &quot;O75888&quot;        &quot;O76036&quot;        &quot;O76061&quot;        &quot;O76070&quot;       
+ [109] &quot;O76076&quot;        &quot;O94760&quot;        &quot;O94813&quot;        &quot;O94856&quot;       
+ [113] &quot;O94903&quot;        &quot;O94907&quot;        &quot;O94985&quot;        &quot;O94992&quot;       
+ [117] &quot;O95256&quot;        &quot;O95379&quot;        &quot;O95388&quot;        &quot;O95407&quot;       
+ [121] &quot;O95466&quot;        &quot;O95498&quot;        &quot;O95502&quot;        &quot;O95630&quot;       
+ [125] &quot;O95633&quot;        &quot;O95644&quot;        &quot;O95684&quot;        &quot;O95721&quot;       
+ [129] &quot;O95760&quot;        &quot;O95817&quot;        &quot;O95831&quot;        &quot;O95866&quot;       
+ [133] &quot;O95988&quot;        &quot;O95994&quot;        &quot;O95998&quot;        &quot;O96017&quot;       
+ [137] &quot;P00441&quot;        &quot;P00519&quot;        &quot;P00568&quot;        &quot;P00740&quot;       
+ [141] &quot;P00749&quot;        &quot;P00750&quot;        &quot;P00797&quot;        &quot;P00915&quot;       
+ [145] &quot;P00918&quot;        &quot;P00995&quot;        &quot;P01033&quot;        &quot;P01034&quot;       
+ [149] &quot;P01127&quot;        &quot;P01130&quot;        &quot;P01133&quot;        &quot;P01135&quot;       
+ [153] &quot;P01137&quot;        &quot;P01138&quot;        &quot;P01236&quot;        &quot;P01242&quot;       
+ [157] &quot;P01258&quot;        &quot;P01275&quot;        &quot;P01579&quot;        &quot;P01583&quot;       
+ [161] &quot;P01584&quot;        &quot;P01589&quot;        &quot;P01730&quot;        &quot;P01732&quot;       
+ [165] &quot;P01833&quot;        &quot;P01903&quot;        &quot;P02144&quot;        &quot;P02533&quot;       
+ [169] &quot;P02745&quot;        &quot;P02749&quot;        &quot;P02760&quot;        &quot;P02771&quot;       
+ [173] &quot;P02778&quot;        &quot;P03950&quot;        &quot;P03956&quot;        &quot;P04054&quot;       
+ [177] &quot;P04066&quot;        &quot;P04080&quot;        &quot;P04179&quot;        &quot;P04216&quot;       
+ [181] &quot;P04233&quot;        &quot;P04626&quot;        &quot;P04637&quot;        &quot;P04746&quot;       
+ [185] &quot;P04792&quot;        &quot;P05089&quot;        &quot;P05112&quot;        &quot;P05113&quot;       
+ [189] &quot;P05121&quot;        &quot;P05164&quot;        &quot;P05362&quot;        &quot;P05412&quot;       
+ [193] &quot;P05451&quot;        &quot;P05455&quot;        &quot;P05556&quot;        &quot;P05783&quot;       
+ [197] &quot;P05937&quot;        &quot;P06127&quot;        &quot;P06681&quot;        &quot;P06731&quot;       
+ [201] &quot;P06733&quot;        &quot;P06748&quot;        &quot;P06756&quot;        &quot;P06858&quot;       
+ [205] &quot;P06870&quot;        &quot;P07108&quot;        &quot;P07196&quot;        &quot;P07204&quot;       
+ [209] &quot;P07237&quot;        &quot;P07306&quot;        &quot;P07339&quot;        &quot;P07359&quot;       
+ [213] &quot;P07451&quot;        &quot;P07478&quot;        &quot;P07585&quot;        &quot;P07711&quot;       
+ [217] &quot;P07741&quot;        &quot;P07858&quot;        &quot;P07911&quot;        &quot;P07947&quot;       
+ [221] &quot;P07948&quot;        &quot;P07949&quot;        &quot;P08069&quot;        &quot;P08118&quot;       
+ [225] &quot;P08174&quot;        &quot;P08236&quot;        &quot;P08397&quot;        &quot;P08473&quot;       
+ [229] &quot;P08571&quot;        &quot;P08581&quot;        &quot;P08670&quot;        &quot;P08727&quot;       
+ [233] &quot;P08758&quot;        &quot;P08833&quot;        &quot;P08887&quot;        &quot;P09038&quot;       
+ [237] &quot;P09093&quot;        &quot;P09104&quot;        &quot;P09105&quot;        &quot;P09110&quot;       
+ [241] &quot;P09211&quot;        &quot;P09237&quot;        &quot;P09238&quot;        &quot;P09382&quot;       
+ [245] &quot;P09466&quot;        &quot;P09496&quot;        &quot;P09525&quot;        &quot;P09603&quot;       
+ [249] &quot;P09668&quot;        &quot;P09758&quot;        &quot;P09874&quot;        &quot;P0CG37&quot;       
+ [253] &quot;P10144&quot;        &quot;P10147&quot;        &quot;P10451&quot;        &quot;P10586&quot;       
+ [257] &quot;P10606&quot;        &quot;P10644&quot;        &quot;P10646&quot;        &quot;P11215&quot;       
+ [261] &quot;P11274&quot;        &quot;P11684&quot;        &quot;P11717&quot;        &quot;P12034&quot;       
+ [265] &quot;P12081&quot;        &quot;P12111&quot;        &quot;P12318&quot;        &quot;P12429&quot;       
+ [269] &quot;P12532&quot;        &quot;P12644&quot;        &quot;P12724&quot;        &quot;P12830&quot;       
+ [273] &quot;P12872&quot;        &quot;P12931&quot;        &quot;P13236&quot;        &quot;P13385&quot;       
+ [277] &quot;P13473&quot;        &quot;P13500&quot;        &quot;P13501&quot;        &quot;P13598&quot;       
+ [281] &quot;P13611&quot;        &quot;P13647&quot;        &quot;P13686&quot;        &quot;P13688&quot;       
+ [285] &quot;P13693&quot;        &quot;P13725&quot;        &quot;P13726&quot;        &quot;P13747&quot;       
+ [289] &quot;P13807&quot;        &quot;P13987&quot;        &quot;P14136&quot;        &quot;P14174&quot;       
+ [293] &quot;P14209&quot;        &quot;P14317&quot;        &quot;P14384&quot;        &quot;P14543&quot;       
+ [297] &quot;P14555&quot;        &quot;P14780&quot;        &quot;P14784&quot;        &quot;P14868&quot;       
+ [301] &quot;P15018&quot;        &quot;P15085&quot;        &quot;P15086&quot;        &quot;P15090&quot;       
+ [305] &quot;P15121&quot;        &quot;P15144&quot;        &quot;P15151&quot;        &quot;P15260&quot;       
+ [309] &quot;P15291&quot;        &quot;P15328&quot;        &quot;P15336&quot;        &quot;P15509&quot;       
+ [313] &quot;P15514&quot;        &quot;P15529&quot;        &quot;P15907&quot;        &quot;P16112&quot;       
+ [317] &quot;P16234&quot;        &quot;P16284&quot;        &quot;P16444&quot;        &quot;P16455&quot;       
+ [321] &quot;P17405&quot;        &quot;P17516&quot;        &quot;P17538&quot;        &quot;P17676&quot;       
+ [325] &quot;P17936&quot;        &quot;P17948&quot;        &quot;P18031&quot;        &quot;P18065&quot;       
+ [329] &quot;P18428&quot;        &quot;P18564&quot;        &quot;P18627&quot;        &quot;P18827&quot;       
+ [333] &quot;P19021&quot;        &quot;P19022&quot;        &quot;P19320&quot;        &quot;P19429&quot;       
+ [337] &quot;P19438&quot;        &quot;P19440&quot;        &quot;P19474&quot;        &quot;P19801&quot;       
+ [341] &quot;P19876&quot;        &quot;P19878&quot;        &quot;P19883&quot;        &quot;P19957&quot;       
+ [345] &quot;P19961&quot;        &quot;P19971&quot;        &quot;P20062&quot;        &quot;P20160&quot;       
+ [349] &quot;P20333&quot;        &quot;P20340&quot;        &quot;P20472&quot;        &quot;P20711&quot;       
+ [353] &quot;P20774&quot;        &quot;P20809&quot;        &quot;P20827&quot;        &quot;P20936&quot;       
+ [357] &quot;P21217_Q11128&quot; &quot;P21549&quot;        &quot;P21583&quot;        &quot;P21589&quot;       
+ [361] &quot;P21709&quot;        &quot;P21741&quot;        &quot;P21810&quot;        &quot;P21860&quot;       
+ [365] &quot;P21964&quot;        &quot;P21980&quot;        &quot;P22004&quot;        &quot;P22079&quot;       
+ [369] &quot;P22223&quot;        &quot;P22301&quot;        &quot;P22304&quot;        &quot;P22307&quot;       
+ [373] &quot;P22466&quot;        &quot;P22676&quot;        &quot;P22692&quot;        &quot;P22748&quot;       
+ [377] &quot;P22749&quot;        &quot;P22894&quot;        &quot;P23141&quot;        &quot;P23229&quot;       
+ [381] &quot;P23276&quot;        &quot;P23381&quot;        &quot;P23515&quot;        &quot;P23526&quot;       
+ [385] &quot;P23582&quot;        &quot;P23588&quot;        &quot;P24001&quot;        &quot;P24387&quot;       
+ [389] &quot;P24394&quot;        &quot;P24592&quot;        &quot;P24821&quot;        &quot;P25116&quot;       
+ [393] &quot;P25445&quot;        &quot;P25685&quot;        &quot;P25774&quot;        &quot;P25786&quot;       
+ [397] &quot;P25815&quot;        &quot;P25942&quot;        &quot;P26440&quot;        &quot;P26447&quot;       
+ [401] &quot;P26842&quot;        &quot;P26951&quot;        &quot;P27352&quot;        &quot;P27487&quot;       
+ [405] &quot;P27540&quot;        &quot;P27695&quot;        &quot;P27930&quot;        &quot;P28325&quot;       
+ [409] &quot;P28799&quot;        &quot;P28827&quot;        &quot;P28838&quot;        &quot;P28845&quot;       
+ [413] &quot;P28907&quot;        &quot;P28908&quot;        &quot;P29279&quot;        &quot;P29317&quot;       
+ [417] &quot;P29350&quot;        &quot;P29466&quot;        &quot;P29475&quot;        &quot;P29965&quot;       
+ [421] &quot;P30039&quot;        &quot;P30043&quot;        &quot;P30044&quot;        &quot;P30048&quot;       
+ [425] &quot;P30086&quot;        &quot;P30260&quot;        &quot;P30519&quot;        &quot;P30533&quot;       
+ [429] &quot;P30740&quot;        &quot;P31146&quot;        &quot;P31431&quot;        &quot;P31948&quot;       
+ [433] &quot;P31949&quot;        &quot;P31994&quot;        &quot;P32456&quot;        &quot;P32926&quot;       
+ [437] &quot;P32970&quot;        &quot;P33151&quot;        &quot;P33241&quot;        &quot;P34130&quot;       
+ [441] &quot;P34913&quot;        &quot;P34947&quot;        &quot;P34949&quot;        &quot;P34998&quot;       
+ [445] &quot;P35052&quot;        &quot;P35070&quot;        &quot;P35218&quot;        &quot;P35225&quot;       
+ [449] &quot;P35237&quot;        &quot;P35247&quot;        &quot;P35318&quot;        &quot;P35442&quot;       
+ [453] &quot;P35443&quot;        &quot;P35475&quot;        &quot;P35590&quot;        &quot;P35613&quot;       
+ [457] &quot;P35637&quot;        &quot;P35754&quot;        &quot;P35916&quot;        &quot;P35968&quot;       
+ [461] &quot;P36222&quot;        &quot;P36269&quot;        &quot;P36941&quot;        &quot;P36959&quot;       
+ [465] &quot;P37023&quot;        &quot;P37108&quot;        &quot;P37173&quot;        &quot;P37235&quot;       
+ [469] &quot;P38484&quot;        &quot;P38936&quot;        &quot;P39060&quot;        &quot;P39748&quot;       
+ [473] &quot;P39900&quot;        &quot;P40121&quot;        &quot;P40189&quot;        &quot;P40198&quot;       
+ [477] &quot;P40222&quot;        &quot;P40225&quot;        &quot;P40259&quot;        &quot;P40933&quot;       
+ [481] &quot;P41217&quot;        &quot;P41218&quot;        &quot;P41222&quot;        &quot;P41236&quot;       
+ [485] &quot;P41271&quot;        &quot;P41586&quot;        &quot;P42331&quot;        &quot;P42574&quot;       
+ [489] &quot;P42575&quot;        &quot;P42658&quot;        &quot;P42701&quot;        &quot;P42702&quot;       
+ [493] &quot;P42768&quot;        &quot;P42785&quot;        &quot;P42830&quot;        &quot;P42892&quot;       
+ [497] &quot;P43489&quot;        &quot;P43490&quot;        &quot;P43628&quot;        &quot;P43629&quot;       
+ [501] &quot;P46060&quot;        &quot;P46109&quot;        &quot;P46379&quot;        &quot;P47712&quot;       
+ [505] &quot;P47929&quot;        &quot;P47992&quot;        &quot;P48023&quot;        &quot;P48052&quot;       
+ [509] &quot;P48061&quot;        &quot;P48304&quot;        &quot;P48307&quot;        &quot;P48357&quot;       
+ [513] &quot;P48643&quot;        &quot;P48740&quot;        &quot;P48745&quot;        &quot;P48960&quot;       
+ [517] &quot;P49023&quot;        &quot;P49441&quot;        &quot;P49747&quot;        &quot;P49763&quot;       
+ [521] &quot;P49788&quot;        &quot;P49789&quot;        &quot;P50225&quot;        &quot;P50452&quot;       
+ [525] &quot;P50453&quot;        &quot;P50579&quot;        &quot;P50583&quot;        &quot;P50591&quot;       
+ [529] &quot;P50749&quot;        &quot;P50895&quot;        &quot;P50995&quot;        &quot;P51452&quot;       
+ [533] &quot;P51531&quot;        &quot;P51580&quot;        &quot;P51671&quot;        &quot;P51692&quot;       
+ [537] &quot;P51858&quot;        &quot;P51888&quot;        &quot;P52564&quot;        &quot;P52789&quot;       
+ [541] &quot;P52798&quot;        &quot;P52823&quot;        &quot;P52888&quot;        &quot;P53539&quot;       
+ [545] &quot;P53582&quot;        &quot;P53985&quot;        &quot;P54317&quot;        &quot;P54727&quot;       
+ [549] &quot;P54760&quot;        &quot;P55008&quot;        &quot;P55039&quot;        &quot;P55058&quot;       
+ [553] &quot;P55082&quot;        &quot;P55103&quot;        &quot;P55145&quot;        &quot;P55259&quot;       
+ [557] &quot;P55273&quot;        &quot;P55291&quot;        &quot;P55773&quot;        &quot;P55774&quot;       
+ [561] &quot;P55789&quot;        &quot;P55808&quot;        &quot;P56159&quot;        &quot;P57087&quot;       
+ [565] &quot;P57771&quot;        &quot;P58294&quot;        &quot;P58499&quot;        &quot;P58546&quot;       
+ [569] &quot;P59665&quot;        &quot;P60484&quot;        &quot;P60568&quot;        &quot;P61218&quot;       
+ [573] &quot;P61244&quot;        &quot;P61978&quot;        &quot;P62166&quot;        &quot;P62736&quot;       
+ [577] &quot;P63098&quot;        &quot;P63313&quot;        &quot;P78310&quot;        &quot;P78324&quot;       
+ [581] &quot;P78325&quot;        &quot;P78333&quot;        &quot;P78380&quot;        &quot;P78410&quot;       
+ [585] &quot;P78552&quot;        &quot;P78556&quot;        &quot;P78560&quot;        &quot;P80075&quot;       
+ [589] &quot;P80188&quot;        &quot;P80303&quot;        &quot;P80370&quot;        &quot;P80511&quot;       
+ [593] &quot;P82980&quot;        &quot;P98160&quot;        &quot;Q00796&quot;        &quot;Q01344&quot;       
+ [597] &quot;Q01469&quot;        &quot;Q02083&quot;        &quot;Q02487&quot;        &quot;Q02643&quot;       
+ [601] &quot;Q02747&quot;        &quot;Q02763&quot;        &quot;Q02790&quot;        &quot;Q03154&quot;       
+ [605] &quot;Q03167&quot;        &quot;Q03405&quot;        &quot;Q03431&quot;        &quot;Q04637&quot;       
+ [609] &quot;Q04759&quot;        &quot;Q04760&quot;        &quot;Q04900&quot;        &quot;Q05084&quot;       
+ [613] &quot;Q05315&quot;        &quot;Q06033&quot;        &quot;Q06141&quot;        &quot;Q06520&quot;       
+ [617] &quot;Q06787&quot;        &quot;Q06830&quot;        &quot;Q07065&quot;        &quot;Q07108&quot;       
+ [621] &quot;Q07325&quot;        &quot;Q07507&quot;        &quot;Q07654&quot;        &quot;Q07812&quot;       
+ [625] &quot;Q07954&quot;        &quot;Q07960&quot;        &quot;Q08174&quot;        &quot;Q08334&quot;       
+ [629] &quot;Q08345&quot;        &quot;Q08431&quot;        &quot;Q08629&quot;        &quot;Q08708&quot;       
+ [633] &quot;Q10588&quot;        &quot;Q11201&quot;        &quot;Q12765&quot;        &quot;Q12778&quot;       
+ [637] &quot;Q12794&quot;        &quot;Q12846&quot;        &quot;Q12866&quot;        &quot;Q12912&quot;       
+ [641] &quot;Q12918&quot;        &quot;Q12933&quot;        &quot;Q12968&quot;        &quot;Q13007&quot;       
+ [645] &quot;Q13093&quot;        &quot;Q13105&quot;        &quot;Q13145&quot;        &quot;Q13158&quot;       
+ [649] &quot;Q13219&quot;        &quot;Q13231&quot;        &quot;Q13261&quot;        &quot;Q13275&quot;       
+ [653] &quot;Q13291&quot;        &quot;Q13308&quot;        &quot;Q13361&quot;        &quot;Q13421&quot;       
+ [657] &quot;Q13426&quot;        &quot;Q13444&quot;        &quot;Q13451&quot;        &quot;Q13459&quot;       
+ [661] &quot;Q13561&quot;        &quot;Q13574&quot;        &quot;Q13576&quot;        &quot;Q13651&quot;       
+ [665] &quot;Q13822&quot;        &quot;Q13867&quot;        &quot;Q14005&quot;        &quot;Q14108&quot;       
+ [669] &quot;Q14112&quot;        &quot;Q14116&quot;        &quot;Q14162&quot;        &quot;Q14203&quot;       
+ [673] &quot;Q14210&quot;        &quot;Q14242&quot;        &quot;Q14393&quot;        &quot;Q14435&quot;       
+ [677] &quot;Q14508&quot;        &quot;Q14512&quot;        &quot;Q14739&quot;        &quot;Q14767&quot;       
+ [681] &quot;Q14773&quot;        &quot;Q14790&quot;        &quot;Q15043&quot;        &quot;Q15067&quot;       
+ [685] &quot;Q15109&quot;        &quot;Q15113&quot;        &quot;Q15126&quot;        &quot;Q15155&quot;       
+ [689] &quot;Q15166&quot;        &quot;Q15389&quot;        &quot;Q15427&quot;        &quot;Q15485&quot;       
+ [693] &quot;Q15517&quot;        &quot;Q15582&quot;        &quot;Q15633&quot;        &quot;Q15661&quot;       
+ [697] &quot;Q15814&quot;        &quot;Q15818&quot;        &quot;Q15828&quot;        &quot;Q15831&quot;       
+ [701] &quot;Q15846&quot;        &quot;Q16270&quot;        &quot;Q16288&quot;        &quot;Q16363&quot;       
+ [705] &quot;Q16543&quot;        &quot;Q16552&quot;        &quot;Q16595&quot;        &quot;Q16620&quot;       
+ [709] &quot;Q16627&quot;        &quot;Q16651&quot;        &quot;Q16663&quot;        &quot;Q16674&quot;       
+ [713] &quot;Q16698&quot;        &quot;Q16740&quot;        &quot;Q16762&quot;        &quot;Q16769&quot;       
+ [717] &quot;Q16772&quot;        &quot;Q16775&quot;        &quot;Q16790&quot;        &quot;Q16864&quot;       
+ [721] &quot;Q16881&quot;        &quot;Q2TAL6&quot;        &quot;Q2VWP7&quot;        &quot;Q496F6&quot;       
+ [725] &quot;Q49AH0&quot;        &quot;Q4KMG0&quot;        &quot;Q4LE39&quot;        &quot;Q53H47&quot;       
+ [729] &quot;Q53H82&quot;        &quot;Q5JTD0&quot;        &quot;Q5JZY3&quot;        &quot;Q5KU26&quot;       
+ [733] &quot;Q5R372&quot;        &quot;Q5T2D2&quot;        &quot;Q5ZPR3&quot;        &quot;Q6EIG7&quot;       
+ [737] &quot;Q6FI81&quot;        &quot;Q6GTS8&quot;        &quot;Q6GTX8&quot;        &quot;Q6ISS4&quot;       
+ [741] &quot;Q6NW40&quot;        &quot;Q6NXT1&quot;        &quot;Q6P1N0&quot;        &quot;Q6P2H3&quot;       
+ [745] &quot;Q6P4E1&quot;        &quot;Q6PGN9&quot;        &quot;Q6PJW8&quot;        &quot;Q6UB28&quot;       
+ [749] &quot;Q6UWL2&quot;        &quot;Q6UWN8&quot;        &quot;Q6UX15&quot;        &quot;Q6UX27&quot;       
+ [753] &quot;Q6UX82&quot;        &quot;Q6UXB2&quot;        &quot;Q6UXB4&quot;        &quot;Q6UXH1&quot;       
+ [757] &quot;Q6UXH9&quot;        &quot;Q6UXK2&quot;        &quot;Q6WN34&quot;        &quot;Q6XZF7&quot;       
+ [761] &quot;Q6ZMC9&quot;        &quot;Q6ZMH5&quot;        &quot;Q6ZMJ2&quot;        &quot;Q6ZMJ4&quot;       
+ [765] &quot;Q6ZUJ8&quot;        &quot;Q76LX8&quot;        &quot;Q76M96&quot;        &quot;Q7L5N7&quot;       
+ [769] &quot;Q7L5Y9&quot;        &quot;Q7L8A9&quot;        &quot;Q7LG56&quot;        &quot;Q7Z434&quot;       
+ [773] &quot;Q7Z4W1&quot;        &quot;Q7Z5L0&quot;        &quot;Q7Z5R6&quot;        &quot;Q7Z6M1&quot;       
+ [777] &quot;Q7Z739&quot;        &quot;Q7Z7D3&quot;        &quot;Q86SF2&quot;        &quot;Q86SR1&quot;       
+ [781] &quot;Q86T13&quot;        &quot;Q86VW0&quot;        &quot;Q86WD7&quot;        &quot;Q86WV1&quot;       
+ [785] &quot;Q86Z14&quot;        &quot;Q8IU57&quot;        &quot;Q8IUN9&quot;        &quot;Q8IW75&quot;       
+ [789] &quot;Q8IWL1&quot;        &quot;Q8IWL2&quot;        &quot;Q8IX05&quot;        &quot;Q8IXJ6&quot;       
+ [793] &quot;Q8IYS5&quot;        &quot;Q8N129&quot;        &quot;Q8N149&quot;        &quot;Q8N1Q1&quot;       
+ [797] &quot;Q8N2G4&quot;        &quot;Q8N423&quot;        &quot;Q8N5S9&quot;        &quot;Q8N608&quot;       
+ [801] &quot;Q8N6P7&quot;        &quot;Q8N6Q3&quot;        &quot;Q8N8S7&quot;        &quot;Q8NBI3&quot;       
+ [805] &quot;Q8NBP7&quot;        &quot;Q8NBS9&quot;        &quot;Q8NBZ7&quot;        &quot;Q8NC01&quot;       
+ [809] &quot;Q8NCC3&quot;        &quot;Q8NDB2&quot;        &quot;Q8NEZ2&quot;        &quot;Q8NFP4&quot;       
+ [813] &quot;Q8NHJ6&quot;        &quot;Q8NHL6&quot;        &quot;Q8NHS0&quot;        &quot;Q8NI22&quot;       
+ [817] &quot;Q8TAD2&quot;        &quot;Q8TCT1&quot;        &quot;Q8TCZ2&quot;        &quot;Q8TD06&quot;       
+ [821] &quot;Q8TDL5&quot;        &quot;Q8TDQ1&quot;        &quot;Q8TE57&quot;        &quot;Q8TE58&quot;       
+ [825] &quot;Q8TEU8&quot;        &quot;Q8WTT0&quot;        &quot;Q8WTU2&quot;        &quot;Q8WTV0&quot;       
+ [829] &quot;Q8WU39&quot;        &quot;Q8WUX2&quot;        &quot;Q8WV07&quot;        &quot;Q8WV92&quot;       
+ [833] &quot;Q8WVQ1&quot;        &quot;Q8WWN9&quot;        &quot;Q8WWY7&quot;        &quot;Q8WX77&quot;       
+ [837] &quot;Q8WXI8&quot;        &quot;Q8WYN0&quot;        &quot;Q92484&quot;        &quot;Q92520&quot;       
+ [841] &quot;Q92583&quot;        &quot;Q92597&quot;        &quot;Q92609&quot;        &quot;Q92692&quot;       
+ [845] &quot;Q92820&quot;        &quot;Q92823&quot;        &quot;Q92832&quot;        &quot;Q92844&quot;       
+ [849] &quot;Q92851&quot;        &quot;Q92854&quot;        &quot;Q92917&quot;        &quot;Q92956&quot;       
+ [853] &quot;Q92982&quot;        &quot;Q969D9&quot;        &quot;Q969P0&quot;        &quot;Q969V3&quot;       
+ [857] &quot;Q969Z4&quot;        &quot;Q96A56&quot;        &quot;Q96AP7&quot;        &quot;Q96AX2&quot;       
+ [861] &quot;Q96B36&quot;        &quot;Q96B86&quot;        &quot;Q96CD2&quot;        &quot;Q96D42&quot;       
+ [865] &quot;Q96DU3&quot;        &quot;Q96EK5&quot;        &quot;Q96F46&quot;        &quot;Q96FE7&quot;       
+ [869] &quot;Q96FQ6&quot;        &quot;Q96GW7&quot;        &quot;Q96H15&quot;        &quot;Q96I15&quot;       
+ [873] &quot;Q96I82&quot;        &quot;Q96IU4&quot;        &quot;Q96J42&quot;        &quot;Q96JA1&quot;       
+ [877] &quot;Q96JP9&quot;        &quot;Q96LA5&quot;        &quot;Q96LC7&quot;        &quot;Q96N03&quot;       
+ [881] &quot;Q96NA2&quot;        &quot;Q96NB1&quot;        &quot;Q96NY8&quot;        &quot;Q96NZ8&quot;       
+ [885] &quot;Q96P31&quot;        &quot;Q96PD2&quot;        &quot;Q96PD4&quot;        &quot;Q96PL1&quot;       
+ [889] &quot;Q96PQ0&quot;        &quot;Q96RD9&quot;        &quot;Q96RJ3&quot;        &quot;Q96SB3&quot;       
+ [893] &quot;Q96SM3&quot;        &quot;Q99426&quot;        &quot;Q99435&quot;        &quot;Q99497&quot;       
+ [897] &quot;Q99538&quot;        &quot;Q99549&quot;        &quot;Q99616&quot;        &quot;Q99674&quot;       
+ [901] &quot;Q99683&quot;        &quot;Q99685&quot;        &quot;Q99717&quot;        &quot;Q99727&quot;       
+ [905] &quot;Q99731&quot;        &quot;Q99795&quot;        &quot;Q99895&quot;        &quot;Q99969&quot;       
+ [909] &quot;Q99972&quot;        &quot;Q99983&quot;        &quot;Q99988&quot;        &quot;Q9BQB4&quot;       
+ [913] &quot;Q9BRF8&quot;        &quot;Q9BS26&quot;        &quot;Q9BS40&quot;        &quot;Q9BSW2&quot;       
+ [917] &quot;Q9BT73&quot;        &quot;Q9BU40&quot;        &quot;Q9BUD6&quot;        &quot;Q9BUE0&quot;       
+ [921] &quot;Q9BW30&quot;        &quot;Q9BWV1&quot;        &quot;Q9BXJ1&quot;        &quot;Q9BXJ7&quot;       
+ [925] &quot;Q9BXS1&quot;        &quot;Q9BXY4&quot;        &quot;Q9BY76&quot;        &quot;Q9BYE9&quot;       
+ [929] &quot;Q9BZM5&quot;        &quot;Q9BZR6&quot;        &quot;Q9BZZ2&quot;        &quot;Q9C0C4&quot;       
+ [933] &quot;Q9GZM7&quot;        &quot;Q9GZT9&quot;        &quot;Q9GZY6&quot;        &quot;Q9H008&quot;       
+ [937] &quot;Q9H0C8&quot;        &quot;Q9H0P0&quot;        &quot;Q9H156&quot;        &quot;Q9H1C3&quot;       
+ [941] &quot;Q9H1U4&quot;        &quot;Q9H2A7&quot;        &quot;Q9H2W6&quot;        &quot;Q9H3G5&quot;       
+ [945] &quot;Q9H3R2&quot;        &quot;Q9H3U7&quot;        &quot;Q9H446&quot;        &quot;Q9H4A9&quot;       
+ [949] &quot;Q9H4D0&quot;        &quot;Q9H4P4&quot;        &quot;Q9H5V8&quot;        &quot;Q9H5Y7&quot;       
+ [953] &quot;Q9H6B4&quot;        &quot;Q9H6S3&quot;        &quot;Q9H773&quot;        &quot;Q9HA65&quot;       
+ [957] &quot;Q9HAN9&quot;        &quot;Q9HAV5&quot;        &quot;Q9HAV7&quot;        &quot;Q9HAW4&quot;       
+ [961] &quot;Q9HB29&quot;        &quot;Q9HC38&quot;        &quot;Q9HCB6&quot;        &quot;Q9HCM2&quot;       
+ [965] &quot;Q9HD26&quot;        &quot;Q9NNX6&quot;        &quot;Q9NP70&quot;        &quot;Q9NP79&quot;       
+ [969] &quot;Q9NP84&quot;        &quot;Q9NPH0&quot;        &quot;Q9NPH6&quot;        &quot;Q9NPY3&quot;       
+ [973] &quot;Q9NQ25&quot;        &quot;Q9NQ30&quot;        &quot;Q9NQ76&quot;        &quot;Q9NQ88&quot;       
+ [977] &quot;Q9NQX5&quot;        &quot;Q9NR28&quot;        &quot;Q9NRA1&quot;        &quot;Q9NRD8&quot;       
+ [981] &quot;Q9NRG1&quot;        &quot;Q9NRJ3&quot;        &quot;Q9NRM6&quot;        &quot;Q9NRV9&quot;       
+ [985] &quot;Q9NRW1&quot;        &quot;Q9NS15&quot;        &quot;Q9NS68&quot;        &quot;Q9NS71&quot;       
+ [989] &quot;Q9NSA1&quot;        &quot;Q9NSK7&quot;        &quot;Q9NUY8&quot;        &quot;Q9NWQ8&quot;       
+ [993] &quot;Q9NX58&quot;        &quot;Q9NXA8&quot;        &quot;Q9NY25&quot;        &quot;Q9NYY1&quot;       
+ [997] &quot;Q9NZ53&quot;        &quot;Q9NZC2&quot;        &quot;Q9NZD4&quot;        &quot;Q9NZK5&quot;       
+[1001] &quot;Q9NZN5&quot;        &quot;Q9NZQ7&quot;        &quot;Q9NZT2&quot;        &quot;Q9P0G3&quot;       
+[1005] &quot;Q9P0J1&quot;        &quot;Q9P0K1&quot;        &quot;Q9P0M4&quot;        &quot;Q9P0V8&quot;       
+[1009] &quot;Q9P126&quot;        &quot;Q9P1Z2&quot;        &quot;Q9P232&quot;        &quot;Q9UBB4&quot;       
+[1013] &quot;Q9UBP4&quot;        &quot;Q9UBR2&quot;        &quot;Q9UBT3&quot;        &quot;Q9UBU3&quot;       
+[1017] &quot;Q9UBW5&quot;        &quot;Q9UDT6&quot;        &quot;Q9UGM5&quot;        &quot;Q9UGT4&quot;       
+[1021] &quot;Q9UHC6&quot;        &quot;Q9UHD0&quot;        &quot;Q9UHD8&quot;        &quot;Q9UHF1&quot;       
+[1025] &quot;Q9UHF4&quot;        &quot;Q9UHV9&quot;        &quot;Q9UIB8&quot;        &quot;Q9UII2&quot;       
+[1029] &quot;Q9UJ68&quot;        &quot;Q9UJU6&quot;        &quot;Q9UJY5&quot;        &quot;Q9UK53&quot;       
+[1033] &quot;Q9UK85&quot;        &quot;Q9UKJ0&quot;        &quot;Q9UKJ1&quot;        &quot;Q9UKK9&quot;       
+[1037] &quot;Q9UKL0&quot;        &quot;Q9UKP3&quot;        &quot;Q9UKU9&quot;        &quot;Q9UKX5&quot;       
+[1041] &quot;Q9ULL4&quot;        &quot;Q9UM07&quot;        &quot;Q9UM47&quot;        &quot;Q9UMF0&quot;       
+[1045] &quot;Q9UMR7&quot;        &quot;Q9UN19&quot;        &quot;Q9UNE0&quot;        &quot;Q9UNK0&quot;       
+[1049] &quot;Q9UNZ2&quot;        &quot;Q9UPV0&quot;        &quot;Q9UPY6&quot;        &quot;Q9UQB8&quot;       
+[1053] &quot;Q9Y223&quot;        &quot;Q9Y240&quot;        &quot;Q9Y243&quot;        &quot;Q9Y258&quot;       
+[1057] &quot;Q9Y265&quot;        &quot;Q9Y266&quot;        &quot;Q9Y275&quot;        &quot;Q9Y279&quot;       
+[1061] &quot;Q9Y286&quot;        &quot;Q9Y2B0&quot;        &quot;Q9Y2V2&quot;        &quot;Q9Y2W6&quot;       
+[1065] &quot;Q9Y2Z0&quot;        &quot;Q9Y336&quot;        &quot;Q9Y3D6&quot;        &quot;Q9Y3P8&quot;       
+[1069] &quot;Q9Y478&quot;        &quot;Q9Y4L1&quot;        &quot;Q9Y4X3&quot;        &quot;Q9Y5A7&quot;       
+[1073] &quot;Q9Y5C1&quot;        &quot;Q9Y5K6&quot;        &quot;Q9Y5K8&quot;        &quot;Q9Y5L3&quot;       
+[1077] &quot;Q9Y5V3&quot;        &quot;Q9Y5X1&quot;        &quot;Q9Y624&quot;        &quot;Q9Y653&quot;       
+[1081] &quot;Q9Y662&quot;        &quot;Q9Y680&quot;        &quot;Q9Y6A5&quot;        &quot;Q9Y6D9&quot;       
+[1085] &quot;Q9Y6E0&quot;        &quot;Q9Y6K9&quot;        &quot;Q9Y6N7&quot;        &quot;Q9Y6Q6&quot;       
+[1089] &quot;Q9Y6Y9&quot;       
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="checking-for-normality-using-shapiro-wilk-test">
+<h5>2.1.2.2 Checking for normality using Shapiro-Wilk test<a class="headerlink" href="#checking-for-normality-using-shapiro-wilk-test" title="Link to this heading">#</a></h5>
+<div class="cell tag_hide-input tag_scroll-output docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">normality_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">join_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">UniProt</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span>
+<span class="w">    </span><span class="n">shapiro_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">NPX</span><span class="p">)),</span><span class="w"> </span><span class="n">.groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;drop&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">mutate</span><span class="p">(</span><span class="n">shapiro_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">map</span><span class="p">(</span><span class="n">shapiro_test</span><span class="p">,</span><span class="w"> </span><span class="n">tidy</span><span class="p">))</span><span class="w"> </span><span class="o">|&gt;</span><span class="w">  </span>
+<span class="w">  </span><span class="nf">unnest</span><span class="p">(</span><span class="n">shapiro_test</span><span class="p">)</span><span class="w">   </span>
+
+<span class="n">normality_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">normality_results</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">p.value</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span>
+
+<span class="n">normality_list</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">normality_df</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="nf">pull</span><span class="p">(</span><span class="n">UniProt</span><span class="p">)</span><span class="w">                          </span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">normality_df</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">normality_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 4</caption>
+<thead>
+	<tr><th></th><th scope=col>UniProt</th><th scope=col>statistic</th><th scope=col>p.value</th><th scope=col>method</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>O15467</td><td>0.9987295</td><td>0.86121216</td><td>Shapiro-Wilk normality test</td></tr>
+	<tr><th scope=row>2</th><td>O43557</td><td>0.9970696</td><td>0.16779689</td><td>Shapiro-Wilk normality test</td></tr>
+	<tr><th scope=row>3</th><td>O95544</td><td>0.9963716</td><td>0.06854867</td><td>Shapiro-Wilk normality test</td></tr>
+	<tr><th scope=row>4</th><td>P00533</td><td>0.9970415</td><td>0.16198854</td><td>Shapiro-Wilk normality test</td></tr>
+	<tr><th scope=row>5</th><td>P01374</td><td>0.9970769</td><td>0.16933109</td><td>Shapiro-Wilk normality test</td></tr>
+	<tr><th scope=row>6</th><td>P05121</td><td>0.9964111</td><td>0.07216494</td><td>Shapiro-Wilk normality test</td></tr>
+</tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> [1] &quot;O15467&quot; &quot;O43557&quot; &quot;O95544&quot; &quot;P00533&quot; &quot;P01374&quot; &quot;P05121&quot; &quot;P08571&quot; &quot;P09603&quot;
+ [9] &quot;P09958&quot; &quot;P16562&quot; &quot;P18428&quot; &quot;P20062&quot; &quot;P21709&quot; &quot;P26951&quot; &quot;P27487&quot; &quot;P28908&quot;
+[17] &quot;P35247&quot; &quot;P35813&quot; &quot;P35968&quot; &quot;P42830&quot; &quot;P50591&quot; &quot;P51671&quot; &quot;P52789&quot; &quot;P55773&quot;
+[25] &quot;P78333&quot; &quot;P78552&quot; &quot;P80075&quot; &quot;Q13093&quot; &quot;Q13241&quot; &quot;Q15846&quot; &quot;Q6DN72&quot; &quot;Q6UXB2&quot;
+[33] &quot;Q6UXH9&quot; &quot;Q86SR1&quot; &quot;Q96J42&quot; &quot;Q96JA1&quot; &quot;Q99727&quot; &quot;Q9GZM7&quot; &quot;Q9HAV7&quot; &quot;Q9HBB8&quot;
+[41] &quot;Q9NP70&quot; &quot;Q9NZC2&quot; &quot;Q9UIB8&quot; &quot;Q9Y266&quot; &quot;Q9Y4X3&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">filter_for_proteins</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">intersect</span><span class="p">(</span><span class="n">homogenity_list</span><span class="p">,</span><span class="w"> </span><span class="n">normality_list</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;The list of proteins that passed all assumptions are:&quot;</span><span class="p">)</span>
+<span class="n">filter_for_proteins</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;The list of proteins that passed all assumptions are:&quot;
+</pre></div>
+</div>
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'O43557'</li><li>'P05121'</li><li>'P08571'</li><li>'P09603'</li><li>'P18428'</li><li>'P20062'</li><li>'P21709'</li><li>'P26951'</li><li>'P27487'</li><li>'P28908'</li><li>'P35247'</li><li>'P35968'</li><li>'P42830'</li><li>'P50591'</li><li>'P51671'</li><li>'P52789'</li><li>'P55773'</li><li>'P78333'</li><li>'P78552'</li><li>'P80075'</li><li>'Q13093'</li><li>'Q15846'</li><li>'Q6UXB2'</li><li>'Q6UXH9'</li><li>'Q86SR1'</li><li>'Q96J42'</li><li>'Q96JA1'</li><li>'Q99727'</li><li>'Q9GZM7'</li><li>'Q9HAV7'</li><li>'Q9NP70'</li><li>'Q9NZC2'</li><li>'Q9UIB8'</li><li>'Q9Y266'</li><li>'Q9Y4X3'</li></ol>
+</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">filtered_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">join_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">filter</span><span class="p">(</span><span class="n">UniProt</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">filter_for_proteins</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;This filtered dataset contains &quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">filter_for_proteins</span><span class="p">),</span><span class="w"> </span><span class="s">&quot; unique proteins.&quot;</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] 27440
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;This filtered dataset contains 35 unique proteins.&quot;
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 59</caption>
+<thead>
+	<tr><th></th><th scope=col>subject_id</th><th scope=col>COVID</th><th scope=col>Age_cat</th><th scope=col>BMI_cat</th><th scope=col>HEART</th><th scope=col>LUNG</th><th scope=col>KIDNEY</th><th scope=col>DIABETES</th><th scope=col>HTN</th><th scope=col>IMMUNO</th><th scope=col>⋯</th><th scope=col>Assay</th><th scope=col>MissingFreq</th><th scope=col>Panel</th><th scope=col>Panel_Lot_Nr</th><th scope=col>PlateID</th><th scope=col>QC_Warning</th><th scope=col>Assay_Warning</th><th scope=col>Normalization</th><th scope=col>LOD</th><th scope=col>NPX</th></tr>
+	<tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>⋯</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>AMBN </td><td>0.0025</td><td>Inflammation   </td><td>B04403</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td> -0.9412</td><td>-0.0957</td></tr>
+	<tr><th scope=row>2</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>CCL11</td><td>0.0013</td><td>Inflammation   </td><td>B04403</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td> -7.9432</td><td>-3.1507</td></tr>
+	<tr><th scope=row>3</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>CCL23</td><td>0.0000</td><td>Inflammation   </td><td>B04403</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td> -5.5427</td><td>-2.1460</td></tr>
+	<tr><th scope=row>4</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>CCL27</td><td>0.0013</td><td>Cardiometabolic</td><td>B04405</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td> -3.1467</td><td>-1.6989</td></tr>
+	<tr><th scope=row>5</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>CCL8 </td><td>0.0000</td><td>Oncology       </td><td>B04404</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td>-11.1811</td><td>-1.4358</td></tr>
+	<tr><th scope=row>6</th><td>1</td><td>1</td><td>1</td><td>4</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>CD14 </td><td>0.0000</td><td>Cardiometabolic</td><td>B04405</td><td>20200772_Plate5</td><td>PASS</td><td>PASS</td><td>Intensity</td><td> -8.3767</td><td>-2.3645</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+</section>
+<section id="results-and-interpretation">
+<h4>2.1.3 Results and Interpretation<a class="headerlink" href="#results-and-interpretation" title="Link to this heading">#</a></h4>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">compute_cohens_d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span><span class="w"> </span><span class="n">g2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">g1_mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span>
+<span class="w">      </span><span class="n">g2_mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">g2</span><span class="p">)</span>
+<span class="w">      </span><span class="n">g1_sd</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sd</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span>
+<span class="w">      </span><span class="n">g2_sd</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sd</span><span class="p">(</span><span class="n">g2</span><span class="p">)</span>
+
+<span class="w">      </span><span class="n">g1_n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span>
+<span class="w">      </span><span class="n">g2_n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">g2</span><span class="p">)</span>
+<span class="w">      </span><span class="n">pooled_sd</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(((</span><span class="n">g1_n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">g1_sd</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">g2_n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">g2_sd</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">g1_n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">g2_n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">2</span><span class="p">))</span>
+
+<span class="w">      </span><span class="n">cohens_d</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">g1_mean</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">g2_mean</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">pooled_sd</span>
+<span class="w">      </span><span class="nf">return</span><span class="p">(</span><span class="n">cohens_d</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">compare_t_test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">    </span><span class="nf">group_by</span><span class="p">(</span><span class="n">UniProt</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">    </span><span class="nf">summarise</span><span class="p">(</span>
+<span class="w">      </span><span class="n">t_test</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="nf">t.test</span><span class="p">(</span><span class="n">NPX</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">COVID</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cur_data</span><span class="p">())),</span>
+<span class="w">      </span><span class="n">.groups</span><span class="o">=</span><span class="s">&quot;drop&quot;</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">    </span><span class="nf">mutate</span><span class="p">(</span>
+<span class="w">      </span><span class="n">p_value</span><span class="o">=</span><span class="nf">map_dbl</span><span class="p">(</span><span class="n">t_test</span><span class="p">,</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="o">$</span><span class="n">p.value</span><span class="p">),</span>
+<span class="w">      </span><span class="n">effect_size</span><span class="o">=</span><span class="nf">map2_dbl</span><span class="p">(</span>
+<span class="w">        </span><span class="n">t_test</span><span class="p">,</span><span class="w"> </span><span class="n">UniProt</span><span class="p">,</span>
+<span class="w">        </span><span class="o">~</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="n">g1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">NPX</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">COVID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">UniProt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">.y</span><span class="p">]</span>
+<span class="w">          </span><span class="n">g2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">NPX</span><span class="p">[</span><span class="n">data</span><span class="o">$</span><span class="n">COVID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">UniProt</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">.y</span><span class="p">]</span>
+<span class="w">          </span><span class="nf">compute_cohens_d</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span><span class="w"> </span><span class="n">g2</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
+
+<span class="w">    </span><span class="n">results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">results</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">mutate</span><span class="p">(</span><span class="n">adjusted_p_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">p.adjust</span><span class="p">(</span><span class="n">p_value</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="o">=</span><span class="s">&quot;BH&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">filter</span><span class="p">(</span><span class="n">adjusted_p_value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">effect_size</span><span class="p">))</span>
+
+<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">protein_t_test_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">compare_t_test</span><span class="p">(</span><span class="n">filtered_df</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">protein_t_test_df</span><span class="p">)</span>
+<span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;After removing non-significant relationships, &quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">protein_t_test_df</span><span class="p">),</span><span class="w"> </span><span class="s">&quot; proteins remain.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“There was 1 warning in `summarise()`.
+<span class=" -Color -Color-Cyan">ℹ</span> In argument: `t_test = list(t.test(NPX ~ COVID, data = cur_data()))`.
+<span class=" -Color -Color-Cyan">ℹ</span> In group 1: `UniProt = &quot;O43557&quot;`.
+Caused by warning:
+<span class=" -Color -Color-Yellow">!</span> `cur_data()` was deprecated in dplyr 1.1.0.
+<span class=" -Color -Color-Cyan">ℹ</span> Please use `pick()` instead.”
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 5</caption>
+<thead>
+	<tr><th scope=col>UniProt</th><th scope=col>t_test</th><th scope=col>p_value</th><th scope=col>effect_size</th><th scope=col>adjusted_p_value</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;list&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>P20062</td><td>-13.0748266218357      , 107.527384283259       , 5.88318495470336e-24   , -0.874385379617813     , -0.644159113468144     , -1.68101341463415      , -0.921741168091168     , 0                      , 0.0580713051502305     , two.sided              , Welch Two Sample t-test, NPX by COVID           </td><td>5.883185e-24</td><td>1.3689743</td><td>2.059115e-22</td></tr>
+	<tr><td>Q96JA1</td><td>-12.6639839639431      , 108.487947519905       , 4.09695309378174e-23   , -1.0112248276909       , -0.737523723486917     , -1.75076829268293      , -0.876394017094017     , 0                      , 0.0690441710980073     , two.sided              , Welch Two Sample t-test, NPX by COVID           </td><td>4.096953e-23</td><td>1.3085855</td><td>7.169668e-22</td></tr>
+	<tr><td>O43557</td><td>-10.7684096452754      , 107.943764287575       , 8.35629046285534e-19   , -1.06152055195062      , -0.731476293299885     , -0.579958536585366     , 0.316539886039886      , 0                      , 0.083252629882871      , two.sided              , Welch Two Sample t-test, NPX by COVID           </td><td>8.356290e-19</td><td>1.1209872</td><td>9.749006e-18</td></tr>
+	<tr><td>P80075</td><td>-10.2349228172632      , 104.748024267567       , 1.86467000666308e-17   , -1.38107912368503      , -0.932798258011864     , -5.07111219512195      , -3.9141735042735       , 0                      , 0.113038340542935      , two.sided              , Welch Two Sample t-test, NPX by COVID           </td><td>1.864670e-17</td><td>1.1168153</td><td>1.631586e-16</td></tr>
+	<tr><td>Q9GZM7</td><td>-9.73719165102095      , 108.506639068431       , 1.7715793493603e-16    , -0.708341502172199     , -0.468739096813278     , -1.05927804878049      , -0.470737749287749     , 0                      , 0.0604425095639388     , two.sided              , Welch Two Sample t-test, NPX by COVID           </td><td>1.771579e-16</td><td>1.0059032</td><td>1.240106e-15</td></tr>
+	<tr><td>Q96J42</td><td>-7.49338924413719      , 95.4417702537119       , 3.39076894575144e-11   , -0.562930615696669     , -0.32713607181636      , -1.18369146341463      , -0.73865811965812      , 0                      , 0.0593901276521445     , two.sided              , Welch Two Sample t-test, NPX by COVID           </td><td>3.390769e-11</td><td>0.9870787</td><td>1.318632e-10</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html">'After removing non-significant relationships, 20 proteins remain.'</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">top_10_proteins</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">protein_t_test_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">slice_head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">pull</span><span class="p">(</span><span class="n">UniProt</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&quot;Top 10 proteins with largest effect size values are:&quot;</span><span class="p">)</span>
+<span class="n">top_10_proteins</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Top 10 proteins with largest effect size values are:&quot;
+</pre></div>
+</div>
+<div class="output text_html"><style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'P20062'</li><li>'Q96JA1'</li><li>'O43557'</li><li>'P80075'</li><li>'Q9GZM7'</li><li>'Q96J42'</li><li>'P18428'</li><li>'Q9HAV7'</li><li>'P05121'</li><li>'P08571'</li></ol>
+</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">)</span>
+
+<span class="n">visualize_top_10_proteins</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">join_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">filter</span><span class="p">(</span><span class="n">UniProt</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="n">top_10_proteins</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">ggplot</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">COVID</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">NPX</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="nf">factor</span><span class="p">(</span><span class="n">COVID</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="nf">geom_boxplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">      </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;NPX Levels by Protein and COVID Status&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">x</span><span class="o">=</span><span class="s">&quot;COVID Status&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;NPX&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Figure 1. Protein Expression Variation Associated with COVID Presence&quot;</span>
+<span class="w">      </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">UniProt</span><span class="p">,</span><span class="w"> </span><span class="n">scales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;free&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">      </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">      </span><span class="nf">theme</span><span class="p">(</span>
+<span class="w">            </span><span class="n">plot.title</span><span class="o">=</span><span class="nf">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span>
+<span class="w">            </span><span class="n">plot.caption</span><span class="o">=</span><span class="nf">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkgrey&quot;</span><span class="p">))</span><span class="w"> </span>
+
+<span class="n">visualize_top_10_proteins</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/b01535a54ffd3d5d80d1a9e603e688de101bb69d71e79cf0b8a1d1854bb89c06.png"><img alt="_images/b01535a54ffd3d5d80d1a9e603e688de101bb69d71e79cf0b8a1d1854bb89c06.png" src="_images/b01535a54ffd3d5d80d1a9e603e688de101bb69d71e79cf0b8a1d1854bb89c06.png" style="width: 720px; height: 720px;" /></a>
+</div>
+</div>
+</section>
+</section>
+<section id="impact-of-pre-existing-health-conditions-on-covid-presence">
+<h3>2.2 Impact of Pre-Existing Health Conditions on COVID Presence<a class="headerlink" href="#impact-of-pre-existing-health-conditions-on-covid-presence" title="Link to this heading">#</a></h3>
+<p>To analyze the relationship between pre-existing health conditions and the presence of COVID-19, I am utilizing a <strong>binomial generalized linear model (GLM)</strong>. This model is well suited to the task because the dependent variable, <code class="docutils literal notranslate"><span class="pre">COVID</span></code>, is binary, indicating whether an individual tests positive (1) or negative (0) for COVID-19.</p>
+<p>The model assesses the individual impact of five pre-existing conditions: heart disease, lung disease, kidney disease, diabetes, and hypertension. I have chosen a <strong>non-interaction model</strong>, which assumes that these conditions have independent, additive effects on the likelihood of testing positive for COVID-19. This allows me to observe how each condition contributes to the presence of COVID-19 without accounting for any combined or interactive effects between the conditions at this stage.</p>
+<p>My primary objective is to determine which, if any, of these conditions are significantly associated with COVID-19 presence and to identify the condition with the strongest relationship to the outcome.</p>
+<section id="id2">
+<h4>2.2.1 Hypothesis<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(H_0\)</span>:</strong> Pre-existing health conditions (heart disease, lung disease, kidney disease, diabetes, hypertension) have a significant impact on the presence of COVID-19.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(H_1\)</span>:</strong> Pre-existing health conditions has a significant impact on the presence of COVID-19.</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pre_existing_conds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;HEART&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;LUNG&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;KIDNEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DIABETES&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HTN&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;IMMUNO&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;COVID&quot;</span><span class="p">)</span>
+<span class="n">pre_existing_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">join_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">select</span><span class="p">(</span><span class="nf">all_of</span><span class="p">(</span><span class="n">pre_existing_conds</span><span class="p">))</span>
+
+<span class="nf">for </span><span class="p">(</span><span class="n">column</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">pre_existing_conds</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">pre_existing_df</span><span class="p">[[</span><span class="n">column</span><span class="p">]]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="n">pre_existing_df</span><span class="p">[[</span><span class="n">column</span><span class="p">]])</span>
+<span class="p">}</span>
+
+<span class="nf">head</span><span class="p">(</span><span class="n">pre_existing_df</span><span class="p">)</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">pre_existing_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 6 × 7</caption>
+<thead>
+	<tr><th></th><th scope=col>HEART</th><th scope=col>LUNG</th><th scope=col>KIDNEY</th><th scope=col>DIABETES</th><th scope=col>HTN</th><th scope=col>IMMUNO</th><th scope=col>COVID</th></tr>
+	<tr><th></th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th><th scope=col>&lt;fct&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>1</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+	<tr><th scope=row>2</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+	<tr><th scope=row>3</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+	<tr><th scope=row>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+	<tr><th scope=row>5</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+	<tr><th scope=row>6</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;data.frame&#39;:	1154048 obs. of  7 variables:
+ $ HEART   : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ LUNG    : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ KIDNEY  : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ DIABETES: Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ HTN     : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ IMMUNO  : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+ $ COVID   : Factor w/ 2 levels &quot;0&quot;,&quot;1&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">compare_pre_existing_conds</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glm</span><span class="p">(</span><span class="n">COVID</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">HEART</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">LUNG</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">KIDNEY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">DIABETES</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">HTN</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">IMMUNO</span><span class="p">,</span>
+<span class="w">            </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pre_existing_df</span><span class="p">,</span>
+<span class="w">            </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">binomial</span>
+<span class="w">      </span><span class="p">)</span>
+
+<span class="n">pre_existing_summary</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="n">compare_pre_existing_conds</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">pre_existing_summary</span><span class="p">)</span>
+
+<span class="n">pre_existing_summary_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="w">      </span><span class="n">Condition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rownames</span><span class="p">(</span><span class="n">pre_existing_summary</span><span class="o">$</span><span class="n">coefficients</span><span class="p">),</span>
+<span class="w">      </span><span class="n">Estimate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pre_existing_summary</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="n">STD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pre_existing_summary</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[,</span><span class="w"> </span><span class="s">&quot;Std. Error&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="n">Z_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pre_existing_summary</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[,</span><span class="w"> </span><span class="s">&quot;z value&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="n">p_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pre_existing_summary</span><span class="o">$</span><span class="n">coefficients</span><span class="p">[,</span><span class="w"> </span><span class="s">&quot;Pr(&gt;|z|)&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">pre_existing_summary_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">      </span><span class="nf">filter</span><span class="p">(</span><span class="n">p_value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+glm(formula = COVID ~ HEART + LUNG + KIDNEY + DIABETES + HTN + 
+    IMMUNO, family = binomial, data = pre_existing_df)
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  3.081029   0.006337  486.20   &lt;2e-16 ***
+HEART1      -0.279085   0.007991  -34.93   &lt;2e-16 ***
+LUNG1       -1.385784   0.006756 -205.11   &lt;2e-16 ***
+KIDNEY1     -0.258386   0.008078  -31.99   &lt;2e-16 ***
+DIABETES1    0.424673   0.006998   60.68   &lt;2e-16 ***
+HTN1        -0.572461   0.007527  -76.05   &lt;2e-16 ***
+IMMUNO1     -1.171622   0.008357 -140.20   &lt;2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 773343  on 1154047  degrees of freedom
+Residual deviance: 688212  on 1154041  degrees of freedom
+AIC: 688226
+
+Number of Fisher Scoring iterations: 5
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 7 × 5</caption>
+<thead>
+	<tr><th></th><th scope=col>Condition</th><th scope=col>Estimate</th><th scope=col>STD</th><th scope=col>Z_value</th><th scope=col>p_value</th></tr>
+	<tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>(Intercept)</th><td>(Intercept)</td><td> 3.0810290</td><td>0.006336893</td><td> 486.20502</td><td> 0.000000e+00</td></tr>
+	<tr><th scope=row>HEART1</th><td>HEART1     </td><td>-0.2790854</td><td>0.007990581</td><td> -34.92680</td><td>2.914718e-267</td></tr>
+	<tr><th scope=row>LUNG1</th><td>LUNG1      </td><td>-1.3857840</td><td>0.006756234</td><td>-205.11188</td><td> 0.000000e+00</td></tr>
+	<tr><th scope=row>KIDNEY1</th><td>KIDNEY1    </td><td>-0.2583860</td><td>0.008078190</td><td> -31.98563</td><td>1.727527e-224</td></tr>
+	<tr><th scope=row>DIABETES1</th><td>DIABETES1  </td><td> 0.4246733</td><td>0.006998466</td><td>  60.68091</td><td> 0.000000e+00</td></tr>
+	<tr><th scope=row>HTN1</th><td>HTN1       </td><td>-0.5724614</td><td>0.007527214</td><td> -76.05224</td><td> 0.000000e+00</td></tr>
+	<tr><th scope=row>IMMUNO1</th><td>IMMUNO1    </td><td>-1.1716219</td><td>0.008356871</td><td>-140.19863</td><td> 0.000000e+00</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="id3">
+<h4>2.2.2 Results and Interpretation<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<p>Based on the results, all the pre-existing health conditions are strongly associated with the presence of COVID-19. Interestingly, only <strong>diabetes</strong> has a positive <code class="docutils literal notranslate"><span class="pre">Estimate</span></code>, representing the log-odds of testing positive for COVID-19 associated with having diabetes, while holding other variables constant. This suggests that individuals with diabetes are more likely to test positive for COVID-19 compared to those without diabetes, indicating that diabetes as a pre-existing condition increases the likelihood of contracting the COVID-19 virus.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">)</span>
+
+<span class="n">pre_existing_fig</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">pre_existing_summary_df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Condition</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estimate</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lightblue&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;navy&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.7</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_errorbar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estimate</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">STD</span><span class="p">,</span><span class="w"> </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Estimate</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">STD</span><span class="p">),</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Effect of Pre-Existing Conditions on COVID Presence&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<span class="w">    </span><span class="n">y</span><span class="o">=</span><span class="s">&quot;Log-Odds Estimate&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">x</span><span class="o">=</span><span class="s">&quot;Pre-Existing Condision&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">caption</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Figure 2. Log-odd estimates of various pre-existing conditions on COVID presence.&quot;</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">      </span><span class="nf">theme</span><span class="p">(</span>
+<span class="w">            </span><span class="n">plot.title</span><span class="o">=</span><span class="nf">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span>
+<span class="w">            </span><span class="n">plot.caption</span><span class="o">=</span><span class="nf">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="o">=</span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">colour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;darkgrey&quot;</span><span class="p">))</span><span class="w"> </span>
+
+<span class="n">pre_existing_fig</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/baea6fc8cb6f481c6c4c5c01270645156b7751ac57f6558fb7847bd0dd69a4aa.png"><img alt="_images/baea6fc8cb6f481c6c4c5c01270645156b7751ac57f6558fb7847bd0dd69a4aa.png" src="_images/baea6fc8cb6f481c6c4c5c01270645156b7751ac57f6558fb7847bd0dd69a4aa.png" style="width: 720px; height: 480px;" /></a>
+</div>
+</div>
+<p>As seen from the above, lung disease has the strongest association with testing positive for COVID-19. This indicates that having lung diease is most strongly associated with a reduced likelihood of COVID-19 presence.</p>
+</section>
+</section>
+<section id="influence-of-age-and-bmi-on-covid-19-risk">
+<h3>2.3 Influence of Age and BMI on COVID-19 Risk<a class="headerlink" href="#influence-of-age-and-bmi-on-covid-19-risk" title="Link to this heading">#</a></h3>
+<p>Before statistically analyzing the influence of <code class="docutils literal notranslate"><span class="pre">Age</span></code> and <code class="docutils literal notranslate"><span class="pre">BMI</span></code> on the presence of COVID-19, I will visualize the differences in mean percentages of COVID-19 occurrence across the various categories of both <code class="docutils literal notranslate"><span class="pre">Age</span></code> and <code class="docutils literal notranslate"><span class="pre">BMI</span></code>. This visualization will help illustrate how these factors relate to the likelihood of contracting COVID-19.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">age_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">join_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">Age_cat</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span>
+<span class="w">    </span><span class="n">total_cases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">covid_positive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">COVID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">),</span>
+<span class="w">    </span><span class="n">covid_percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">covid_positive</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">total_cases</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="n">bmi_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">join_df</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">group_by</span><span class="p">(</span><span class="n">BMI_cat</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span>
+<span class="w">  </span><span class="nf">summarise</span><span class="p">(</span>
+<span class="w">    </span><span class="n">total_cases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">n</span><span class="p">(),</span>
+<span class="w">    </span><span class="n">covid_positive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">COVID</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">),</span>
+<span class="w">    </span><span class="n">covid_percentage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">covid_positive</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">total_cases</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="n">age_df</span>
+<span class="n">bmi_df</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 5 × 4</caption>
+<thead>
+	<tr><th scope=col>Age_cat</th><th scope=col>total_cases</th><th scope=col>covid_positive</th><th scope=col>covid_percentage</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>1</td><td> 88320</td><td> 82432</td><td>93.33333</td></tr>
+	<tr><td>2</td><td>216384</td><td>206080</td><td>95.23810</td></tr>
+	<tr><td>3</td><td>338560</td><td>306176</td><td>90.43478</td></tr>
+	<tr><td>4</td><td>315008</td><td>262016</td><td>83.17757</td></tr>
+	<tr><td>5</td><td>195776</td><td>176640</td><td>90.22556</td></tr>
+</tbody>
+</table>
+</div><div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 4</caption>
+<thead>
+	<tr><th scope=col>BMI_cat</th><th scope=col>total_cases</th><th scope=col>covid_positive</th><th scope=col>covid_percentage</th></tr>
+	<tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>0</td><td> 16192</td><td>  8832</td><td>54.54545</td></tr>
+	<tr><td>1</td><td>203136</td><td>156032</td><td>76.81159</td></tr>
+	<tr><td>2</td><td>409216</td><td>391552</td><td>95.68345</td></tr>
+	<tr><td>3</td><td>341504</td><td>310592</td><td>90.94828</td></tr>
+	<tr><td>4</td><td>141312</td><td>128064</td><td>90.62500</td></tr>
+	<tr><td>5</td><td> 42688</td><td> 38272</td><td>89.65517</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">)</span>
+
+<span class="n">age_fig</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">age_df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Age_cat</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">covid_percentage</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dodge&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="s">&quot;lightgreen&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.7</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Percentage of COVID Positive Cases by Age Category&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;Age Category&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Percentage of COVID Positive Cases&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span>
+<span class="w">    </span><span class="n">plot.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span>
+<span class="w">    </span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="n">bmi_fig</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">bmi_df</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BMI_cat</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">covid_percentage</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dodge&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="s">&quot;lightpink&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.7</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&quot;Percentage of COVID Positive Cases by BMI Category&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">xlab</span><span class="p">(</span><span class="s">&quot;BMI Category&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">ylab</span><span class="p">(</span><span class="s">&quot;Percentage of COVID Positive Cases&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span>
+<span class="w">    </span><span class="n">plot.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span>
+<span class="w">    </span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+
+<span class="n">age_bmi_fig</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">plot_grid</span><span class="p">(</span><span class="n">age_fig</span><span class="p">,</span><span class="w"> </span><span class="n">bmi_fig</span><span class="p">,</span><span class="w"> </span><span class="n">ncol</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="n">age_bmi_fig</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<a class="reference internal image-reference" href="_images/336c49b25135f1a97feaf9c5fd40ea9843c59b518c29c35d4a5e7d35918e683f.png"><img alt="_images/336c49b25135f1a97feaf9c5fd40ea9843c59b518c29c35d4a5e7d35918e683f.png" src="_images/336c49b25135f1a97feaf9c5fd40ea9843c59b518c29c35d4a5e7d35918e683f.png" style="width: 720px; height: 360px;" /></a>
+</div>
+</div>
+<p>The visualization above reveals that, for <code class="docutils literal notranslate"><span class="pre">Age</span></code>, the likelihood of contracting COVID-19 remains relatively consistent across different age groups. In contrast, the visualization suggests that higher <code class="docutils literal notranslate"><span class="pre">BMI</span></code> values may be associated with an increased probability of testing positive for the COVID-19 virus.</p>
+<p>To further investigate these relationships, we will conduct a <strong>Chi-Square test</strong> to assess the independence of COVID-19 presence across the various age and BMI categories. This statistical test will help determine if the observed differences in COVID-19 rates among these groups are statistically significant.</p>
+<p><strong>Chi-Square test</strong> is the ideal choice of modelling for the task as it specializes in determining association between categorical variables.</p>
+<section id="id4">
+<h4>2.3.1 Hypothesis<a class="headerlink" href="#id4" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(H_0\)</span>: There is no significant association between the presence of COVID-19 and the age group (or BMI category).</p></li>
+<li><p><span class="math notranslate nohighlight">\(H_1\)</span>: There is a significant association between the presence of COVID-19 and the age group (or BMI category).</p></li>
+</ul>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">6</span><span class="p">)</span>
+
+<span class="n">determine_statistical_relationship</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">col_name</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;Chi-Square Test Results for&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">col_name</span><span class="p">))</span>
+
+<span class="w">      </span><span class="n">contingency_table</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">table</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="n">col_name</span><span class="p">]],</span><span class="w"> </span><span class="n">data</span><span class="p">[[</span><span class="s">&quot;COVID&quot;</span><span class="p">]])</span>
+<span class="w">      </span><span class="n">chi2_test</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">chisq.test</span><span class="p">(</span><span class="n">contingency_table</span><span class="p">)</span>
+<span class="w">      </span><span class="n">result_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="w">            </span><span class="n">Chi2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chi2_test</span><span class="o">$</span><span class="n">statistic</span><span class="p">,</span>
+<span class="w">            </span><span class="n">DF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chi2_test</span><span class="o">$</span><span class="n">parameter</span><span class="p">,</span>
+<span class="w">            </span><span class="n">p_value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">chi2_test</span><span class="o">$</span><span class="n">p.value</span>
+<span class="w">      </span><span class="p">)</span>
+<span class="w">      </span><span class="n">fig</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes_string</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col_name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dodge&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="o">=</span><span class="s">&quot;salmon&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">colour</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;Association between &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">col_name</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; and &quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; COVID&quot;</span><span class="p">),</span><span class="w"> </span>
+<span class="w">                  </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Count&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">            </span><span class="nf">theme_bw</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span>
+<span class="w">            </span><span class="nf">theme</span><span class="p">(</span><span class="n">plot.title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span>
+<span class="w">                  </span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<span class="w">            </span><span class="p">)</span>
+<span class="w">      </span><span class="nf">print</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="w">      </span><span class="nf">return</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">determine_statistical_relationship</span><span class="p">(</span><span class="n">join_df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Age_cat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Chi-Square Test Results for Age_cat&quot;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning message:
+“`aes_string()` was deprecated in ggplot2 3.0.0.
+<span class=" -Color -Color-Cyan">ℹ</span> Please use tidy evaluation idioms with `aes()`.
+<span class=" -Color -Color-Cyan">ℹ</span> See also `vignette(&quot;ggplot2-in-packages&quot;)` for more information.”
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 1 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>Chi2</th><th scope=col>DF</th><th scope=col>p_value</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>X-squared</th><td>22862.47</td><td>4</td><td>0</td></tr>
+</tbody>
+</table>
+</div><a class="reference internal image-reference" href="_images/5f84eedb8ed2d21320f316126f25832a0996d2a413a3fa5f3a8178af61dc35e5.png"><img alt="_images/5f84eedb8ed2d21320f316126f25832a0996d2a413a3fa5f3a8178af61dc35e5.png" src="_images/5f84eedb8ed2d21320f316126f25832a0996d2a413a3fa5f3a8178af61dc35e5.png" style="width: 480px; height: 360px;" /></a>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">determine_statistical_relationship</span><span class="p">(</span><span class="n">join_df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;BMI_cat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] &quot;Chi-Square Test Results for BMI_cat&quot;
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A data.frame: 1 × 3</caption>
+<thead>
+	<tr><th></th><th scope=col>Chi2</th><th scope=col>DF</th><th scope=col>p_value</th></tr>
+	<tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><th scope=row>X-squared</th><td>73707.03</td><td>5</td><td>0</td></tr>
+</tbody>
+</table>
+</div><a class="reference internal image-reference" href="_images/b89aec2a2909e1a0cb7fa0b8904e267dd439c8aa7fad03245be0f13835ae54c6.png"><img alt="_images/b89aec2a2909e1a0cb7fa0b8904e267dd439c8aa7fad03245be0f13835ae54c6.png" src="_images/b89aec2a2909e1a0cb7fa0b8904e267dd439c8aa7fad03245be0f13835ae54c6.png" style="width: 480px; height: 360px;" /></a>
+</div>
+</div>
+</section>
+<section id="id5">
+<h4>2.3.2 Results and Interpretation<a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p>Since the <span class="math notranslate nohighlight">\(p\)</span>-values from both Chi-Square tests are below the significance level of <span class="math notranslate nohighlight">\(a\)</span> = <span class="math notranslate nohighlight">\(0.05\)</span>, we conclude that there are statistically significant associations between age groups and BMI categories with the presence of COVID-19. This indicates that the likelihood of contracting COVID-19 varies significantly across different age groups and BMI categories.</p>
+</section>
+</section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<hr class="footnotes docutils" />
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="ref1" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Olink Proteomics. (n.d.). <em>MGH COVID-19 study overview</em>. Retrieved October 28, 2024, from <a class="reference external" href="https://info.olink.com/mgh-covid-study-overview-page">https://info.olink.com/mgh-covid-study-overview-page</a></p>
+</aside>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="water-quality.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Water Quality in Canada</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploratory-data-analysis">1. Exploratory Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-missing-values">1.1 Count Missing Values</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#join-the-two-data-frames">1.2 Join the Two Data Frames</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-unique-proteins-per-patient">1.3 Number of Unique Proteins per Patient</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-testing">2. Statistical Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npx-level-variations-associated-with-covid-status">2.1 NPX Level Variations Associated with COVID Status</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis">2.1.1 Hypothesis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assumptions">2.1.2 Assumptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-the-homotenity-of-variances-using-levene-s-test">2.1.2.1 Checking for the homotenity of variances using Levene’s Test</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-for-normality-using-shapiro-wilk-test">2.1.2.2 Checking for normality using Shapiro-Wilk test</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-interpretation">2.1.3 Results and Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-pre-existing-health-conditions-on-covid-presence">2.2 Impact of Pre-Existing Health Conditions on COVID Presence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1 Hypothesis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2 Results and Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#influence-of-age-and-bmi-on-covid-19-risk">2.3 Influence of Age and BMI on COVID-19 Risk</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.1 Hypothesis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.2 Results and Interpretation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jenny Lee
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
