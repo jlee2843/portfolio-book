@@ -1,43 +1,44 @@
 Traceback (most recent call last):
-  File "/Users/jennylee/miniconda3/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/Users/jennylee/miniforge3/envs/mds574/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/Users/jennylee/miniconda3/lib/python3.11/site-packages/nbclient/client.py", line 1305, in execute
+  File "/Users/jennylee/miniforge3/envs/mds574/lib/python3.11/site-packages/nbclient/client.py", line 1314, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/jennylee/miniconda3/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 172, in wrapped
+  File "/Users/jennylee/miniforge3/envs/mds574/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/jennylee/miniconda3/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
+  File "/Users/jennylee/miniforge3/envs/mds574/lib/python3.11/asyncio/base_events.py", line 653, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/Users/jennylee/miniconda3/lib/python3.11/site-packages/nbclient/client.py", line 705, in async_execute
+  File "/Users/jennylee/miniforge3/envs/mds574/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/Users/jennylee/miniconda3/lib/python3.11/site-packages/nbclient/client.py", line 1058, in async_execute_cell
+  File "/Users/jennylee/miniforge3/envs/mds574/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/jennylee/miniconda3/lib/python3.11/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
+  File "/Users/jennylee/miniforge3/envs/mds574/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-HTML("""
-<div align="center">
-    <iframe width="560" height="315"
-    src="https://youtube.com/embed/U8rOM4LPRRM"
-    </iframe>
-</div>
-""")
+import pandas as pd 
+import numpy as np
+import IPython
+from IPython.display import YouTubeVideo
+from IPython.display import HTML
+from myst_nb import glue
+import fontawesome
+import schemdraw
+from schemdraw.flow import *
+from schemdraw import flow
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-Cell [0;32mIn[1], line 1[0m
-[0;32m----> 1[0m [43mHTML[49m([38;5;124m"""[39m
-[1;32m      2[0m [38;5;124m<div align=[39m[38;5;124m"[39m[38;5;124mcenter[39m[38;5;124m"[39m[38;5;124m>[39m
-[1;32m      3[0m [38;5;124m    <iframe width=[39m[38;5;124m"[39m[38;5;124m560[39m[38;5;124m"[39m[38;5;124m height=[39m[38;5;124m"[39m[38;5;124m315[39m[38;5;124m"[39m
-[1;32m      4[0m [38;5;124m    src=[39m[38;5;124m"[39m[38;5;124mhttps://youtube.com/embed/U8rOM4LPRRM[39m[38;5;124m"[39m
-[1;32m      5[0m [38;5;124m    </iframe>[39m
-[1;32m      6[0m [38;5;124m</div>[39m
-[1;32m      7[0m [38;5;124m"""[39m)
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 7[0m
+[1;32m      5[0m [38;5;28;01mfrom[39;00m [38;5;21;01mIPython[39;00m[38;5;21;01m.[39;00m[38;5;21;01mdisplay[39;00m [38;5;28;01mimport[39;00m HTML
+[1;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmyst_nb[39;00m [38;5;28;01mimport[39;00m glue
+[0;32m----> 7[0m [38;5;28;01mimport[39;00m [38;5;21;01mfontawesome[39;00m
+[1;32m      8[0m [38;5;28;01mimport[39;00m [38;5;21;01mschemdraw[39;00m
+[1;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01mschemdraw[39;00m[38;5;21;01m.[39;00m[38;5;21;01mflow[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
 
-[0;31mNameError[0m: name 'HTML' is not defined
+[0;31mModuleNotFoundError[0m: No module named 'fontawesome'
 

@@ -16,6 +16,7 @@ parts:
       title: Air Quality in Canada
     - file: water-quality
       title: Water Quality in Canada
+  - file: covid-analysis
 - caption: Collaborative Projects
   chapters:
   - url: https://ubc-mds.github.io/fraud_detection/fraud_detection_full.html
